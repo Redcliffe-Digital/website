@@ -1,0 +1,39 @@
+/**
+ * Site-wide constants. Edit copy and contact details here (and in CONTENT.md's
+ * referenced files) rather than hunting through components.
+ */
+export const site = {
+  name: 'Redcliffe Digital',
+  legalName: 'Redcliffe Digital Ltd',
+  // Used for canonical URLs, sitemap, Open Graph and JSON-LD. Update before launch.
+  url: 'https://www.redcliffedigital.co.uk',
+  description:
+    'A small team of senior engineers, architects and SREs applying trading-grade engineering discipline to UK public sector technology.',
+  tagline: 'UK-based technology consultancy',
+  email: 'hello@redcliffedigital.co.uk',
+  pressEmail: 'press@redcliffedigital.co.uk',
+  careersEmail: 'careers@redcliffedigital.co.uk',
+  phone: '+44 (0)117 374 9120', // TODO: confirm before launch
+  phoneHref: '+441173749120',
+  address: {
+    line1: 'Redcliffe Wharf',
+    city: 'Bristol',
+    postcode: 'BS1 6SR',
+    country: 'GB',
+  },
+  companyNumber: '15847291', // TODO: replace with real Companies House number before launch
+} as const
+
+export const nav: { label: string; href: string }[] = [
+  { label: 'What we do', href: '/what-we-do' },
+  { label: 'Case studies', href: '/case-studies' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+]
+
+export const services: { label: string; href: string }[] = [
+  { label: 'Cloud platform engineering', href: '/what-we-do#cloud-platform-engineering' },
+  { label: 'Resilience and SRE', href: '/what-we-do#resilience-and-sre' },
+  { label: 'Data and analytics engineering', href: '/what-we-do#data-and-analytics' },
+  { label: 'Security and assurance', href: '/what-we-do#security-and-assurance' },
+]
