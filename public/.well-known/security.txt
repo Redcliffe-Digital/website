@@ -1,0 +1,7 @@
+# Security contact for Redcliffe Digital (RFC 9116)
+# TODO before launch: confirm the security@ inbox is monitored and update Expires annually.
+
+Contact: mailto:security@redcliffedigital.co.uk
+Expires: 2027-05-22T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://www.redcliffedigital.co.uk/.well-known/security.txt

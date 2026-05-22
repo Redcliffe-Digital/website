@@ -61,6 +61,19 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-GB" className={`${fraunces.variable} ${inter.variable}`}>
+      {/*
+        Analytics: none by default — no cookies, no third-party scripts, so no
+        cookie banner is required. To enable privacy-respecting, cookieless
+        Plausible analytics, decide on it (see NEXT_STEPS.md) and add the tag
+        below to <head>:
+
+        <script
+          defer
+          data-domain="redcliffedigital.co.uk"
+          src="https://plausible.io/js/script.js"
+        />
+        TODO: confirm the analytics decision before launch.
+      */}
       <body className="flex min-h-screen flex-col">
         <a
           href="#main-content"
