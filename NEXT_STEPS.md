@@ -11,7 +11,8 @@ comment. Search the repo for `TODO` and `placeholder` to find them all.
 ### Facts and identifiers
 
 - [ ] **Phone number** — `site.phone` / `site.phoneHref` in `src/lib/site.ts` (currently `+44 (0)117 374 9120`).
-- [ ] **Registered office, VAT number, ICO registration** — `companyFacts` in `src/app/about/page.tsx`.
+- [ ] **VAT number, ICO registration** — `companyFacts` in `src/app/about/page.tsx`. (Registered office address is set.)
+- [ ] **Phone number area code** — the placeholder number uses `0117` (Bristol); the office is now Newcastle (`01782`). Update `site.phone`.
 - [ ] **Supplier ID** `RDC-2026-008` — `src/app/contact/page.tsx`.
 - [ ] **Company number** is set to `17197703`. Confirm this is correct (it appears in the footer, About page and JSON-LD).
 - [ ] **Canonical site URL** — `site.url` in `src/lib/site.ts` assumes `https://www.redcliffedigital.co.uk`.

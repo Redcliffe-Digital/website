@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Container } from '@/components/Container'
 import { PageHeader } from '@/components/PageHeader'
-import { site } from '@/lib/site'
+import { formattedAddress, site } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'About',
@@ -63,7 +63,7 @@ const team: { initials: string; name: string; role: string; previously: string }
 const companyFacts: { label: string; value: string; placeholder?: boolean }[] = [
   { label: 'Registered name', value: 'Redcliffe Digital Ltd, England and Wales' },
   { label: 'Company number', value: '17197703' },
-  { label: 'Registered office', value: 'Redcliffe Wharf, Bristol BS1 6SR', placeholder: true },
+  { label: 'Registered office', value: formattedAddress },
   { label: 'VAT number', value: 'GB 432 8821 09', placeholder: true },
   { label: 'ICO registration', value: 'ZB123456', placeholder: true },
 ]

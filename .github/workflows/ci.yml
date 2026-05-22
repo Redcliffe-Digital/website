@@ -48,9 +48,7 @@ jobs:
     name: Accessibility (axe-core)
     runs-on: ubuntu-latest
     needs: build
-    # Non-blocking for now: a11y is enforced in code review and manual testing.
-    # Promote to a required check once the baseline is green in CI.
-    continue-on-error: true
+    # Blocking: the baseline is green, so a new WCAG violation should fail CI.
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -72,15 +70,17 @@ jobs:
       - name: Build (static export)
         run: pnpm build
 
-      - name: Serve static site
-        run: pnpm exec serve out -l 3000 &
-
-      - name: Wait for server
-        run: npx --yes wait-on http://localhost:3000 --timeout 60000
-
+      # Serve, wait and scan in a single step: a process backgrounded with `&`
+      # only survives for the duration of the step that started it. The runner
+      # image ships a matched Chrome + ChromeDriver pair, so we point axe at the
+      # runner's own driver ($CHROMEWEBDRIVER) rather than letting axe-core/cli
+      # pull its own (newer) driver, which skews against the installed Chrome.
       - name: Run axe-core
         run: |
-          pnpm dlx @axe-core/cli \
+          npx --yes serve@14 out -l 3000 &
+          npx --yes wait-on http://localhost:3000 --timeout 60000
+          npx --yes @axe-core/cli \
+            --chromedriver-path "${CHROMEWEBDRIVER}/chromedriver" \
             http://localhost:3000/ \
             http://localhost:3000/what-we-do/ \
             http://localhost:3000/case-studies/ \
