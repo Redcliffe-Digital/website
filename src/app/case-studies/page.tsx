@@ -23,7 +23,7 @@ export default function CaseStudiesPage() {
         <Container>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {sortedCaseStudies.map((study) => (
-              <CaseStudyCard key={study.slug} study={study} />
+              <CaseStudyCard key={study.slug} study={study} titleAs="h2" />
             ))}
           </div>
           <p className="text-muted mt-10 max-w-2xl text-sm leading-relaxed">

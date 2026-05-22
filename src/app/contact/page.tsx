@@ -4,7 +4,7 @@ import { Mail, MapPin, Phone, FileText } from 'lucide-react'
 import { Container } from '@/components/Container'
 import { PageHeader } from '@/components/PageHeader'
 import { Button } from '@/components/Button'
-import { site } from '@/lib/site'
+import { formattedAddress, site } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Get in touch',
@@ -115,67 +115,68 @@ export default function ContactPage() {
 
             {/* Direct details */}
             <div className="lg:col-span-5">
-              <dl className="border-hairline space-y-8 border-t pt-8 lg:border-t-0 lg:pt-0">
-                <div className="flex gap-4">
+              <ul
+                role="list"
+                className="border-hairline space-y-8 border-t pt-8 lg:border-t-0 lg:pt-0"
+              >
+                <li className="flex gap-4">
                   <Mail
                     className="text-oxblood mt-0.5 h-5 w-5 shrink-0"
                     strokeWidth={1.75}
                     aria-hidden="true"
                   />
                   <div>
-                    <dt className="eyebrow">Email</dt>
-                    <dd className="mt-1">
+                    <p className="eyebrow">Email</p>
+                    <p className="mt-1">
                       <a href={`mailto:${site.email}`} className="link-accent">
                         {site.email}
                       </a>
-                    </dd>
+                    </p>
                   </div>
-                </div>
-                <div className="flex gap-4">
+                </li>
+                <li className="flex gap-4">
                   <Phone
                     className="text-oxblood mt-0.5 h-5 w-5 shrink-0"
                     strokeWidth={1.75}
                     aria-hidden="true"
                   />
                   <div>
-                    <dt className="eyebrow">Phone</dt>
-                    <dd className="text-body mt-1">
+                    <p className="eyebrow">Phone</p>
+                    <p className="text-body mt-1">
                       <a href={`tel:${site.phoneHref}`} className="hover:text-oxblood">
                         {site.phone}
                       </a>{' '}
                       <span className="text-muted text-xs">(placeholder)</span>
-                    </dd>
+                    </p>
                   </div>
-                </div>
-                <div className="flex gap-4">
+                </li>
+                <li className="flex gap-4">
                   <MapPin
                     className="text-oxblood mt-0.5 h-5 w-5 shrink-0"
                     strokeWidth={1.75}
                     aria-hidden="true"
                   />
                   <div>
-                    <dt className="eyebrow">Office</dt>
-                    <dd className="text-body mt-1">
-                      {site.address.line1}, {site.address.city} {site.address.postcode}
-                    </dd>
+                    <p className="eyebrow">Office</p>
+                    <p className="text-body mt-1">{formattedAddress}</p>
                   </div>
-                </div>
-                <div className="flex gap-4">
+                </li>
+                <li className="flex gap-4">
                   <FileText
                     className="text-oxblood mt-0.5 h-5 w-5 shrink-0"
                     strokeWidth={1.75}
                     aria-hidden="true"
                   />
                   <div>
-                    <dt className="eyebrow">Procurement</dt>
-                    <dd className="text-body mt-1 leading-relaxed">
+                    <p className="eyebrow">Procurement</p>
+                    <p className="text-body mt-1 leading-relaxed">
                       We’re listed on G-Cloud 14 and Digital Outcomes 6. Our supplier ID is{' '}
                       <span className="font-medium whitespace-nowrap">RDC-2026-008</span>{' '}
                       <span className="text-muted text-xs">(placeholder)</span>.
-                    </dd>
+                    </p>
                   </div>
-                </div>
-              </dl>
+                </li>
+              </ul>
             </div>
           </div>
         </Container>
