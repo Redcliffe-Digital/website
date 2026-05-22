@@ -48,9 +48,7 @@ jobs:
     name: Accessibility (axe-core)
     runs-on: ubuntu-latest
     needs: build
-    # Non-blocking for now: a11y is enforced in code review and manual testing.
-    # Promote to a required check once the baseline is green in CI.
-    continue-on-error: true
+    # Blocking: the baseline is green, so a new WCAG violation should fail CI.
     steps:
       - name: Checkout
         uses: actions/checkout@v4
