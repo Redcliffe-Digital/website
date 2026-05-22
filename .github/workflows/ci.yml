@@ -72,15 +72,18 @@ jobs:
       - name: Build (static export)
         run: pnpm build
 
-      - name: Serve static site
-        run: pnpm exec serve out -l 3000 &
+      - name: Set up Chrome and Chromedriver
+        uses: browser-actions/setup-chrome@v1
+        with:
+          install-chromedriver: true
 
-      - name: Wait for server
-        run: npx --yes wait-on http://localhost:3000 --timeout 60000
-
+      # Serve, wait and scan in a single step: a process backgrounded with `&`
+      # only survives for the duration of the step that started it.
       - name: Run axe-core
         run: |
-          pnpm dlx @axe-core/cli \
+          npx --yes serve@14 out -l 3000 &
+          npx --yes wait-on http://localhost:3000 --timeout 60000
+          npx --yes @axe-core/cli \
             http://localhost:3000/ \
             http://localhost:3000/what-we-do/ \
             http://localhost:3000/case-studies/ \
