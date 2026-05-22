@@ -75,6 +75,11 @@ const organizationSchema = {
       credentialCategory: 'certification',
       name: 'Cyber Essentials',
     },
+    {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'certification',
+      name: 'ISO/IEC 27001',
+    },
   ],
 }
 

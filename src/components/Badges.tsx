@@ -1,20 +1,25 @@
 import type { ReactNode } from 'react'
 
 /*
- * Credential badges — the three Redcliffe Digital actually holds.
+ * Credential badges — the accreditations Redcliffe Digital holds.
  *
  * These monochrome emblems are accurate REPRESENTATIONS that match the site's
  * restrained palette. They are not the awarding bodies' colour artwork.
  *
- * TODO: swap for the official issued assets before launch —
+ * TODO: swap for the official issued assets before launch, each linked to its
+ * verification page and used within the awarding body's brand guidelines —
  *   - AWS Certified Solutions Architect – Professional: the holder's Credly
  *     badge image + verification URL (https://www.credly.com/badges/<id>).
  *   - Microsoft Certified: Azure Solutions Architect Expert: the holder's
  *     Credly/Microsoft Learn badge image + verification URL.
  *   - Cyber Essentials: the IASME-issued badge (carries the certificate
  *     number) + the entry on the NCSC/IASME certificate register.
- * Each official badge must be linked to its verification page and used within
- * the awarding body's brand guidelines.
+ *   - ISO 27001: the UKAS-accredited certification body's mark + certificate
+ *     reference (use the body's logo, not a generic "ISO" mark).
+ *   - G-Cloud 14: the Crown Commercial Service supplier badge + the firm's
+ *     listing on the Digital Marketplace.
+ *   - Disability Confident: the DWP-issued badge at the correct level
+ *     (Committed / Employer / Leader).
  */
 
 interface BadgeDef {
@@ -73,6 +78,40 @@ const BADGES: BadgeDef[] = [
       </g>
     ),
   },
+  {
+    id: 'iso-27001',
+    label: 'ISO 27001',
+    art: (
+      // A medal/seal — concentric rings with ribbon tails.
+      <g>
+        <path d="M18 30 L14 41 L19.5 38 L21 41 L24 31 Z" fill="currentColor" />
+        <path d="M30 30 L34 41 L28.5 38 L27 41 L24 31 Z" fill="currentColor" />
+        <circle cx="24" cy="22" r="12" {...stroke} />
+        <circle cx="24" cy="22" r="5.5" {...stroke} />
+      </g>
+    ),
+  },
+  {
+    id: 'g-cloud-14',
+    label: 'Crown Commercial Service — G-Cloud 14 Supplier',
+    art: (
+      // A crown, for Crown Commercial Service.
+      <g fill="currentColor">
+        <path d="M10 33 L12 18 L19 25 L24 15 L29 25 L36 18 L38 33 Z" />
+        <rect x="10" y="33" width="28" height="5" rx="1" />
+      </g>
+    ),
+  },
+  {
+    id: 'disability-confident',
+    label: 'Disability Confident Committed',
+    art: (
+      <g>
+        <circle cx="24" cy="24" r="14" {...stroke} />
+        <path d="M16 24.5 L21.5 30 L33 17.5" {...stroke} strokeWidth={2.6} />
+      </g>
+    ),
+  },
 ]
 
 interface BadgesProps {
@@ -103,7 +142,7 @@ export function Badges({
 
   return (
     <ul
-      className={`flex flex-wrap items-start ${showLabels ? 'justify-center gap-x-12 gap-y-8 sm:gap-x-16' : 'gap-5'} ${tone} ${className}`}
+      className={`flex flex-wrap items-start ${showLabels ? 'justify-center gap-x-8 gap-y-8 sm:justify-between' : 'gap-5'} ${tone} ${className}`}
     >
       {items.map((badge) => (
         <li key={badge.id} className="flex flex-col items-center text-center">

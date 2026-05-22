@@ -35,10 +35,15 @@ comment. Search the repo for `TODO` and `placeholder` to find them all.
   - AWS Certified Solutions Architect – Professional → Credly badge image + verify URL.
   - Microsoft Certified: Azure Solutions Architect Expert → Credly / Microsoft Learn badge + verify URL.
   - Cyber Essentials → IASME-issued badge (carries the certificate number) + the entry on the IASME/NCSC register.
+  - ISO 27001 → the UKAS-accredited certification body's mark + certificate reference.
+  - Crown Commercial Service — G-Cloud 14 Supplier → the CCS supplier badge + Digital Marketplace listing link.
+  - Disability Confident → the DWP-issued badge at the correct level (Committed / Employer / Leader).
 - [ ] Decide whether to keep the **monochrome treatment** (consistent with the design)
       or use the awarding bodies' **full-colour** badges. Full-colour will break the
       "single calm row" look — if you go that way, give the trust strip more breathing room.
-- [ ] Add back any credentials actually held that were removed (ISO 27001, etc.).
+- [ ] Confirm the **Disability Confident level** — the badge is currently labelled
+      "Committed" (level 1). Update the label in `src/components/Badges.tsx` if you are
+      Employer or Leader.
 
 ### Wiring and integrations
 
