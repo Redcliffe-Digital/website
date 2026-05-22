@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Lint, typecheck, build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Build (static export)
+        run: pnpm build
+
+      - name: Upload static site
+        uses: actions/upload-artifact@v4
+        with:
+          name: out
+          path: out
+          if-no-files-found: error
+
+  accessibility:
+    name: Accessibility (axe-core)
+    runs-on: ubuntu-latest
+    needs: build
+    # Non-blocking for now: a11y is enforced in code review and manual testing.
+    # Promote to a required check once the baseline is green in CI.
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build (static export)
+        run: pnpm build
+
+      - name: Serve static site
+        run: pnpm exec serve out -l 3000 &
+
+      - name: Wait for server
+        run: npx --yes wait-on http://localhost:3000 --timeout 60000
+
+      - name: Run axe-core
+        run: |
+          pnpm dlx @axe-core/cli \
+            http://localhost:3000/ \
+            http://localhost:3000/what-we-do/ \
+            http://localhost:3000/case-studies/ \
+            http://localhost:3000/about/ \
+            http://localhost:3000/contact/ \
+            --exit
