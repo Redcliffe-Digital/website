@@ -5,6 +5,8 @@ interface SectionHeadingProps {
   title: string
   /** Heading level for correct document outline. Defaults to h2. */
   as?: 'h1' | 'h2' | 'h3'
+  /** id applied to the heading element, for aria-labelledby on the section. */
+  id?: string
   className?: string
   /** Larger display sizing for page-level (h1) headings. */
   size?: 'default' | 'display'
@@ -18,6 +20,7 @@ export function SectionHeading({
   eyebrow,
   title,
   as = 'h2',
+  id,
   size = 'default',
   className = '',
 }: SectionHeadingProps) {
@@ -30,7 +33,9 @@ export function SectionHeading({
   return (
     <div className={`fade-up ${className}`}>
       {eyebrow ? <p className="eyebrow mb-3">{eyebrow}</p> : null}
-      <Heading className={`${headingSize} leading-[1.15]`}>{title}</Heading>
+      <Heading id={id} className={`${headingSize} leading-[1.15]`}>
+        {title}
+      </Heading>
     </div>
   )
 }
