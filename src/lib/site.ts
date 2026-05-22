@@ -16,13 +16,17 @@ export const site = {
   phone: '+44 (0)117 374 9120', // TODO: confirm before launch
   phoneHref: '+441173749120',
   address: {
-    line1: 'Redcliffe Wharf',
-    city: 'Bristol',
-    postcode: 'BS1 6SR',
+    line1: 'Flat 14 Hanover Court',
+    line2: 'Hanover Street',
+    city: 'Newcastle',
+    postcode: 'ST5 1HE',
     country: 'GB',
   },
   companyNumber: '17197703',
 } as const
+
+/** Single-line postal address for display. */
+export const formattedAddress = `${site.address.line1}, ${site.address.line2}, ${site.address.city} ${site.address.postcode}`
 
 export const nav: { label: string; href: string }[] = [
   { label: 'What we do', href: '/what-we-do' },

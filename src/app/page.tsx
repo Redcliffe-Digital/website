@@ -54,7 +54,7 @@ const organizationSchema = {
   areaServed: 'GB',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: site.address.line1,
+    streetAddress: `${site.address.line1}, ${site.address.line2}`,
     addressLocality: site.address.city,
     postalCode: site.address.postcode,
     addressCountry: site.address.country,
