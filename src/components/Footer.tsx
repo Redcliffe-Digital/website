@@ -70,7 +70,7 @@ export function Footer() {
               variant="light"
               size={32}
               showLabels={false}
-              ids={['aws', 'azure', 'ce-plus', 'iso', 'g-cloud']}
+              ids={['aws-sa-pro', 'azure-sa-expert', 'cyber-essentials']}
               className="mt-7"
             />
           </div>

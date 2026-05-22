@@ -62,7 +62,7 @@ const team: { initials: string; name: string; role: string; previously: string }
 
 const companyFacts: { label: string; value: string; placeholder?: boolean }[] = [
   { label: 'Registered name', value: 'Redcliffe Digital Ltd, England and Wales' },
-  { label: 'Company number', value: '15847291', placeholder: true },
+  { label: 'Company number', value: '17197703' },
   { label: 'Registered office', value: 'Redcliffe Wharf, Bristol BS1 6SR', placeholder: true },
   { label: 'VAT number', value: 'GB 432 8821 09', placeholder: true },
   { label: 'ICO registration', value: 'ZB123456', placeholder: true },

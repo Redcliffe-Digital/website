@@ -63,22 +63,17 @@ const organizationSchema = {
     {
       '@type': 'EducationalOccupationalCredential',
       credentialCategory: 'certification',
-      name: 'AWS Advanced Tier Services Partner',
+      name: 'AWS Certified Solutions Architect – Professional',
     },
     {
       '@type': 'EducationalOccupationalCredential',
       credentialCategory: 'certification',
-      name: 'Microsoft Azure Solutions Partner',
+      name: 'Microsoft Certified: Azure Solutions Architect Expert',
     },
     {
       '@type': 'EducationalOccupationalCredential',
       credentialCategory: 'certification',
-      name: 'Cyber Essentials Plus',
-    },
-    {
-      '@type': 'EducationalOccupationalCredential',
-      credentialCategory: 'certification',
-      name: 'ISO/IEC 27001',
+      name: 'Cyber Essentials',
     },
   ],
 }

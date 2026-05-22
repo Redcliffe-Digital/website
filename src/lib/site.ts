@@ -21,7 +21,7 @@ export const site = {
     postcode: 'BS1 6SR',
     country: 'GB',
   },
-  companyNumber: '15847291', // TODO: replace with real Companies House number before launch
+  companyNumber: '17197703',
 } as const
 
 export const nav: { label: string; href: string }[] = [
