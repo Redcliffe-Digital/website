@@ -19,14 +19,14 @@ export default function CaseStudiesPage() {
         intro="A small selection of recent work. Some clients ask us not to name them — we honour that."
       />
 
-      <section className="pb-20 pt-6 sm:pb-24 lg:pb-28" aria-label="Case studies">
+      <section className="pt-6 pb-20 sm:pb-24 lg:pb-28" aria-label="Case studies">
         <Container>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {sortedCaseStudies.map((study) => (
               <CaseStudyCard key={study.slug} study={study} />
             ))}
           </div>
-          <p className="mt-10 max-w-2xl text-sm leading-relaxed text-muted">
+          <p className="text-muted mt-10 max-w-2xl text-sm leading-relaxed">
             <span aria-hidden="true">* </span>Client names changed where confidentiality applies.
           </p>
         </Container>

@@ -25,7 +25,7 @@ export default function ContactPage() {
         intro="Tell us what you’re working on. We’ll come back to you within one working day."
       />
 
-      <section className="pb-16 pt-6 sm:pb-20 lg:pb-24" aria-label="Contact">
+      <section className="pt-6 pb-16 sm:pb-20 lg:pb-24" aria-label="Contact">
         <Container>
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             {/* Form */}
@@ -85,7 +85,13 @@ export default function ContactPage() {
                     <label htmlFor="message" className={labelClass}>
                       How can we help?
                     </label>
-                    <textarea id="message" name="message" rows={6} required className={fieldClass} />
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={6}
+                      required
+                      className={fieldClass}
+                    />
                   </div>
                 </div>
 
@@ -109,9 +115,13 @@ export default function ContactPage() {
 
             {/* Direct details */}
             <div className="lg:col-span-5">
-              <dl className="space-y-8 border-t border-hairline pt-8 lg:border-t-0 lg:pt-0">
+              <dl className="border-hairline space-y-8 border-t pt-8 lg:border-t-0 lg:pt-0">
                 <div className="flex gap-4">
-                  <Mail className="mt-0.5 h-5 w-5 shrink-0 text-oxblood" strokeWidth={1.75} aria-hidden="true" />
+                  <Mail
+                    className="text-oxblood mt-0.5 h-5 w-5 shrink-0"
+                    strokeWidth={1.75}
+                    aria-hidden="true"
+                  />
                   <div>
                     <dt className="eyebrow">Email</dt>
                     <dd className="mt-1">
@@ -122,34 +132,46 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <Phone className="mt-0.5 h-5 w-5 shrink-0 text-oxblood" strokeWidth={1.75} aria-hidden="true" />
+                  <Phone
+                    className="text-oxblood mt-0.5 h-5 w-5 shrink-0"
+                    strokeWidth={1.75}
+                    aria-hidden="true"
+                  />
                   <div>
                     <dt className="eyebrow">Phone</dt>
-                    <dd className="mt-1 text-body">
+                    <dd className="text-body mt-1">
                       <a href={`tel:${site.phoneHref}`} className="hover:text-oxblood">
                         {site.phone}
                       </a>{' '}
-                      <span className="text-xs text-muted">(placeholder)</span>
+                      <span className="text-muted text-xs">(placeholder)</span>
                     </dd>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-oxblood" strokeWidth={1.75} aria-hidden="true" />
+                  <MapPin
+                    className="text-oxblood mt-0.5 h-5 w-5 shrink-0"
+                    strokeWidth={1.75}
+                    aria-hidden="true"
+                  />
                   <div>
                     <dt className="eyebrow">Office</dt>
-                    <dd className="mt-1 text-body">
+                    <dd className="text-body mt-1">
                       {site.address.line1}, {site.address.city} {site.address.postcode}
                     </dd>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <FileText className="mt-0.5 h-5 w-5 shrink-0 text-oxblood" strokeWidth={1.75} aria-hidden="true" />
+                  <FileText
+                    className="text-oxblood mt-0.5 h-5 w-5 shrink-0"
+                    strokeWidth={1.75}
+                    aria-hidden="true"
+                  />
                   <div>
                     <dt className="eyebrow">Procurement</dt>
-                    <dd className="mt-1 leading-relaxed text-body">
+                    <dd className="text-body mt-1 leading-relaxed">
                       We’re listed on G-Cloud 14 and Digital Outcomes 6. Our supplier ID is{' '}
-                      <span className="whitespace-nowrap font-medium">RDC-2026-008</span>{' '}
-                      <span className="text-xs text-muted">(placeholder)</span>.
+                      <span className="font-medium whitespace-nowrap">RDC-2026-008</span>{' '}
+                      <span className="text-muted text-xs">(placeholder)</span>.
                     </dd>
                   </div>
                 </div>
@@ -160,9 +182,9 @@ export default function ContactPage() {
       </section>
 
       {/* Media / security band */}
-      <div className="border-t border-hairline bg-stripe">
+      <div className="border-hairline bg-stripe border-t">
         <Container className="py-6">
-          <p className="text-sm leading-relaxed text-muted">
+          <p className="text-muted text-sm leading-relaxed">
             For media enquiries, please email{' '}
             <a href={`mailto:${site.pressEmail}`} className="link-accent">
               {site.pressEmail}

@@ -21,7 +21,7 @@ export function Logo({ variant = 'default', className = '' }: LogoProps) {
         viewBox="0 0 14 14"
         aria-hidden="true"
         focusable="false"
-        className="translate-y-[1px] shrink-0"
+        className="shrink-0 translate-y-[1px]"
       >
         <rect width="14" height="14" fill="#8B1E2D" />
       </svg>

@@ -12,15 +12,11 @@ export function Header() {
   return (
     <header
       data-site-header
-      className="sticky top-0 z-40 border-b border-hairline bg-white/95 backdrop-blur-sm"
+      className="border-hairline sticky top-0 z-40 border-b bg-white/95 backdrop-blur-sm"
     >
       <Container>
         <div className="flex h-16 items-center justify-between gap-6">
-          <Link
-            href="/"
-            aria-label="Redcliffe Digital — home"
-            className="shrink-0 py-2"
-          >
+          <Link href="/" aria-label="Redcliffe Digital — home" className="shrink-0 py-2">
             <Logo />
           </Link>
           <nav aria-label="Primary" className="hidden sm:block">
@@ -29,7 +25,7 @@ export function Header() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm font-medium text-ink transition-colors hover:text-oxblood"
+                    className="text-ink hover:text-oxblood text-sm font-medium transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -40,14 +36,14 @@ export function Header() {
         </div>
       </Container>
       {/* Narrow-screen nav row */}
-      <nav aria-label="Primary" className="border-t border-hairline sm:hidden">
+      <nav aria-label="Primary" className="border-hairline border-t sm:hidden">
         <Container>
           <ul className="flex flex-wrap items-center gap-x-5 gap-y-1 py-3">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-sm font-medium text-ink transition-colors hover:text-oxblood"
+                  className="text-ink hover:text-oxblood text-sm font-medium transition-colors"
                 >
                   {item.label}
                 </Link>

@@ -77,16 +77,19 @@ export default function AboutPage() {
       />
 
       {/* How we work */}
-      <section className="border-t border-hairline py-16 sm:py-20 lg:py-24" aria-labelledby="how-we-work">
+      <section
+        className="border-hairline border-t py-16 sm:py-20 lg:py-24"
+        aria-labelledby="how-we-work"
+      >
         <Container>
           <h2 id="how-we-work" className="text-2xl sm:text-3xl">
             How we work
           </h2>
           <div className="mt-10 grid gap-x-16 gap-y-8 lg:grid-cols-2">
             {principles.map((p) => (
-              <div key={p.title} className="border-t border-hairline pt-5">
-                <p className="leading-relaxed text-body">
-                  <span className="font-medium text-ink">{p.title}</span> {p.body}
+              <div key={p.title} className="border-hairline border-t pt-5">
+                <p className="text-body leading-relaxed">
+                  <span className="text-ink font-medium">{p.title}</span> {p.body}
                 </p>
               </div>
             ))}
@@ -100,7 +103,7 @@ export default function AboutPage() {
           <h2 id="the-team" className="text-2xl sm:text-3xl">
             The team
           </h2>
-          <p className="mt-4 max-w-2xl leading-relaxed text-muted">
+          <p className="text-muted mt-4 max-w-2xl leading-relaxed">
             The people you meet at the kick-off are the people who do the work. No bench, no
             handover.
           </p>
@@ -108,16 +111,16 @@ export default function AboutPage() {
             {team.map((member) => (
               <li key={member.name}>
                 <div
-                  className="flex aspect-square w-full items-center justify-center border border-hairline bg-card"
+                  className="border-hairline bg-card flex aspect-square w-full items-center justify-center border"
                   aria-hidden="true"
                 >
-                  <span className="font-display text-4xl font-medium text-oxblood/80 sm:text-5xl">
+                  <span className="font-display text-oxblood/80 text-4xl font-medium sm:text-5xl">
                     {member.initials}
                   </span>
                 </div>
-                <h3 className="mt-4 font-display text-lg font-medium text-ink">{member.name}</h3>
-                <p className="mt-0.5 text-sm text-body">{member.role}</p>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
+                <h3 className="font-display text-ink mt-4 text-lg font-medium">{member.name}</h3>
+                <p className="text-body mt-0.5 text-sm">{member.role}</p>
+                <p className="text-muted mt-2 text-sm leading-relaxed">
                   Previously: {member.previously}
                 </p>
               </li>
@@ -134,7 +137,7 @@ export default function AboutPage() {
               <h2 id="company" className="text-2xl sm:text-3xl">
                 Company
               </h2>
-              <p className="mt-4 leading-relaxed text-muted">
+              <p className="text-muted mt-4 leading-relaxed">
                 The dull-but-essential facts, for the procurement and due-diligence teams who need
                 them.
               </p>
@@ -142,18 +145,18 @@ export default function AboutPage() {
             <div className="lg:col-span-8">
               <dl className="grid gap-x-12 sm:grid-cols-2">
                 {companyFacts.map((fact) => (
-                  <div key={fact.label} className="border-t border-hairline py-4">
+                  <div key={fact.label} className="border-hairline border-t py-4">
                     <dt className="eyebrow">{fact.label}</dt>
-                    <dd className="mt-1 text-body">
+                    <dd className="text-body mt-1">
                       {fact.value}
                       {fact.placeholder ? (
-                        <span className="ml-2 text-xs text-muted">(placeholder)</span>
+                        <span className="text-muted ml-2 text-xs">(placeholder)</span>
                       ) : null}
                     </dd>
                   </div>
                 ))}
               </dl>
-              <p className="mt-6 text-sm text-muted">
+              <p className="text-muted mt-6 text-sm">
                 Contact us at{' '}
                 <a href={`mailto:${site.email}`} className="link-accent">
                   {site.email}

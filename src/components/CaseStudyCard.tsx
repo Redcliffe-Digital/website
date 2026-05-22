@@ -10,16 +10,17 @@ export function CaseStudyCard({ study }: { study: CaseStudy }) {
   return (
     <Link
       href={`/case-studies/${study.slug}`}
-      className="group flex h-full flex-col border border-hairline bg-card p-8 transition-colors hover:border-ink/30"
+      className="group border-hairline bg-card hover:border-ink/30 flex h-full flex-col border p-8 transition-colors"
     >
       <p className="eyebrow">{study.sector}</p>
-      <h3 className="mt-4 font-display text-xl font-medium leading-snug text-ink">
-        {study.title}
-      </h3>
-      <p className="mt-3 flex-1 text-[0.95rem] leading-relaxed text-muted">{study.excerpt}</p>
-      <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-oxblood">
+      <h3 className="font-display text-ink mt-4 text-xl leading-snug font-medium">{study.title}</h3>
+      <p className="text-muted mt-3 flex-1 text-[0.95rem] leading-relaxed">{study.excerpt}</p>
+      <span className="text-oxblood mt-6 inline-flex items-center gap-1.5 text-sm font-medium">
         Read case study
-        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+        <ArrowRight
+          className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+          aria-hidden="true"
+        />
       </span>
     </Link>
   )

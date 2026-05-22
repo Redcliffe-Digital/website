@@ -7,7 +7,5 @@ interface ContainerProps {
 
 /** Central content column, capped at ~1200px with consistent gutters. */
 export function Container({ children, className = '' }: ContainerProps) {
-  return (
-    <div className={`mx-auto w-full max-w-content px-6 sm:px-8 ${className}`}>{children}</div>
-  )
+  return <div className={`max-w-content mx-auto w-full px-6 sm:px-8 ${className}`}>{children}</div>
 }

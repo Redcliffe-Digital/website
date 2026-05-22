@@ -14,9 +14,9 @@ export function LegalStub({ title, children }: { title: string; children?: React
         title={title}
         intro="This page is a placeholder. The full statement is being drafted and will appear here before launch."
       />
-      <section className="pb-20 pt-4 lg:pb-28">
+      <section className="pt-4 pb-20 lg:pb-28">
         <Container>
-          <div className="max-w-2xl space-y-4 leading-relaxed text-body">
+          <div className="text-body max-w-2xl space-y-4 leading-relaxed">
             {children ?? (
               <p className="text-muted">
                 Content to follow. In the meantime, email{' '}

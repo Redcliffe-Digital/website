@@ -73,7 +73,10 @@ export const practices: Practice[] = [
 
 /** Procurement routes through which the firm can be engaged. */
 export const procurementVehicles: { name: string; detail: string }[] = [
-  { name: 'G-Cloud 14', detail: 'Cloud hosting, software and support via the Digital Marketplace.' },
+  {
+    name: 'G-Cloud 14',
+    detail: 'Cloud hosting, software and support via the Digital Marketplace.',
+  },
   { name: 'Digital Outcomes 6', detail: 'Multidisciplinary teams to deliver digital outcomes.' },
   {
     name: 'Cyber Security Services 3',

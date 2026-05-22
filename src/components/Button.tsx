@@ -25,10 +25,7 @@ type ButtonAsLink = BaseProps & { href: string } & Omit<
     ComponentProps<typeof Link>,
     'href' | 'className'
   >
-type ButtonAsButton = BaseProps & { href?: undefined } & Omit<
-    ComponentProps<'button'>,
-    'className'
-  >
+type ButtonAsButton = BaseProps & { href?: undefined } & Omit<ComponentProps<'button'>, 'className'>
 
 type ButtonProps = ButtonAsLink | ButtonAsButton
 

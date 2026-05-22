@@ -13,9 +13,9 @@ export default function CookiesPage() {
     <LegalStub title="Cookies">
       {/* TODO: drafted by legal */}
       <p>
-        This website sets no cookies and runs no third-party analytics or tracking scripts. There
-        is therefore nothing to consent to, and no cookie banner. If that changes — for example if
-        we add privacy-respecting analytics — this notice will be updated first.
+        This website sets no cookies and runs no third-party analytics or tracking scripts. There is
+        therefore nothing to consent to, and no cookie banner. If that changes — for example if we
+        add privacy-respecting analytics — this notice will be updated first.
       </p>
     </LegalStub>
   )

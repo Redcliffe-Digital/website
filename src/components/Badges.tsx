@@ -68,10 +68,7 @@ const BADGES: BadgeDef[] = [
     label: 'Cyber Essentials',
     art: (
       <g>
-        <path
-          d="M24 6 L40 11 V23 C40 33 32 39 24 42 C16 39 8 33 8 23 V11 Z"
-          {...stroke}
-        />
+        <path d="M24 6 L40 11 V23 C40 33 32 39 24 42 C16 39 8 33 8 23 V11 Z" {...stroke} />
         <path d="M16 23 L21.5 29 L33 16" {...stroke} strokeWidth={2.6} />
       </g>
     ),
@@ -122,7 +119,7 @@ export function Badges({
           </svg>
           {showLabels ? (
             <span
-              className={`mt-3 max-w-[16ch] text-[11px] font-medium uppercase leading-snug tracking-wide ${caption}`}
+              className={`mt-3 max-w-[16ch] text-[11px] leading-snug font-medium tracking-wide uppercase ${caption}`}
             >
               {badge.label}
             </span>

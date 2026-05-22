@@ -32,16 +32,10 @@ function FooterLink({ href, label }: { href: string; label: string }) {
   )
 }
 
-function Column({
-  heading,
-  links,
-}: {
-  heading: string
-  links: { label: string; href: string }[]
-}) {
+function Column({ heading, links }: { heading: string; links: { label: string; href: string }[] }) {
   return (
     <div>
-      <h2 className="font-sans text-xs font-medium uppercase tracking-[0.12em] text-white/50">
+      <h2 className="font-sans text-xs font-medium tracking-[0.12em] text-white/50 uppercase">
         {heading}
       </h2>
       <ul className="mt-4 space-y-2.5">
@@ -63,8 +57,8 @@ export function Footer() {
           <div className="lg:pr-8">
             <Logo variant="inverse" />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
-              Senior engineers, architects and SREs applying trading-grade discipline to UK
-              public sector technology.
+              Senior engineers, architects and SREs applying trading-grade discipline to UK public
+              sector technology.
             </p>
             <Badges
               variant="light"

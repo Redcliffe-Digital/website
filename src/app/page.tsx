@@ -95,10 +95,10 @@ export default function HomePage() {
             <h1 className="mt-5 text-4xl leading-[1.1] sm:text-5xl lg:text-[4rem]">
               Engineering systems where the cost of failure is measured in millions.
             </h1>
-            <p className="mt-7 max-w-[56ch] text-lg leading-relaxed text-muted sm:text-xl">
-              Redcliffe Digital is a small team of senior engineers, architects and SREs. We
-              learned our craft building trading systems where a five-second outage is a
-              board-level incident. We now apply that discipline to public sector technology.
+            <p className="text-muted mt-7 max-w-[56ch] text-lg leading-relaxed sm:text-xl">
+              Redcliffe Digital is a small team of senior engineers, architects and SREs. We learned
+              our craft building trading systems where a five-second outage is a board-level
+              incident. We now apply that discipline to public sector technology.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:gap-4">
               <Button href="/what-we-do" variant="primary">
@@ -113,7 +113,7 @@ export default function HomePage() {
       </section>
 
       {/* Trust strip */}
-      <div className="border-y border-hairline bg-stripe">
+      <div className="border-hairline bg-stripe border-y">
         <Container className="py-8">
           <h2 className="sr-only">Accreditations and partnerships</h2>
           <Badges variant="dark" size={48} />
@@ -126,9 +126,9 @@ export default function HomePage() {
         <div className="mt-12 grid gap-10 md:grid-cols-3 lg:gap-12">
           {practices.map(({ icon: Icon, title, body }) => (
             <div key={title}>
-              <Icon className="h-7 w-7 text-oxblood" strokeWidth={1.5} aria-hidden="true" />
-              <h3 className="mt-5 font-display text-xl font-medium text-ink">{title}</h3>
-              <p className="mt-3 leading-relaxed text-body">{body}</p>
+              <Icon className="text-oxblood h-7 w-7" strokeWidth={1.5} aria-hidden="true" />
+              <h3 className="font-display text-ink mt-5 text-xl font-medium">{title}</h3>
+              <p className="text-body mt-3 leading-relaxed">{body}</p>
             </div>
           ))}
         </div>
@@ -150,19 +150,19 @@ export default function HomePage() {
               id="why-small-firm-heading"
               title="Why a small firm beats a big one"
             />
-            <p className="mt-7 text-lg leading-relaxed text-body">
-              The Big Four can field a hundred consultants by Monday. We can&rsquo;t. What we can
-              do is put two principal engineers in a room with your team on day one — the same
-              people who will still be there in month nine. There is no offshore handover, no
-              rotating bench, no upward delegation. The person you meet at the kick-off is the
-              person writing the code.
+            <p className="text-body mt-7 text-lg leading-relaxed">
+              The Big Four can field a hundred consultants by Monday. We can&rsquo;t. What we can do
+              is put two principal engineers in a room with your team on day one — the same people
+              who will still be there in month nine. There is no offshore handover, no rotating
+              bench, no upward delegation. The person you meet at the kick-off is the person writing
+              the code.
             </p>
           </div>
           <div className="lg:pt-16">
-            <ul className="divide-y divide-hairline border-y border-hairline">
+            <ul className="divide-hairline border-hairline divide-y border-y">
               {whyBullets.map((bullet) => (
                 <li key={bullet} className="flex items-start gap-3 py-4">
-                  <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 bg-oxblood" />
+                  <span aria-hidden="true" className="bg-oxblood mt-2 h-1.5 w-1.5 shrink-0" />
                   <span className="text-body">{bullet}</span>
                 </li>
               ))}
@@ -194,8 +194,8 @@ export default function HomePage() {
               Working on a programme where failure is not an option?
             </h2>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/70">
-              Tell us what you&rsquo;re trying to deliver. We&rsquo;ll tell you honestly whether
-              we can help.
+              Tell us what you&rsquo;re trying to deliver. We&rsquo;ll tell you honestly whether we
+              can help.
             </p>
             <div className="mt-8">
               <Button href={`mailto:${site.email}`} variant="inverse">

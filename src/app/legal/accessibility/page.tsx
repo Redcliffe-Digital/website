@@ -26,9 +26,9 @@ export default function AccessibilityPage() {
         intro="This statement applies to the website at www.redcliffedigital.co.uk."
       />
 
-      <section className="pb-20 pt-4 lg:pb-28">
+      <section className="pt-4 pb-20 lg:pb-28">
         <Container>
-          <div className="max-w-2xl leading-relaxed text-body">
+          <div className="text-body max-w-2xl leading-relaxed">
             <p>
               This website is run by {site.legalName}. We want as many people as possible to be able
               to use it. For example, that means you should be able to:
@@ -41,7 +41,7 @@ export default function AccessibilityPage() {
                 'read the site with a screen reader, in a logical reading order',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 bg-oxblood" />
+                  <span aria-hidden="true" className="bg-oxblood mt-2 h-1.5 w-1.5 shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -118,10 +118,10 @@ export default function AccessibilityPage() {
               This statement was prepared on 22 May 2026 and last reviewed on 22 May 2026. The
               website was tested against WCAG 2.2 AA. Testing was carried out internally using a
               combination of automated checks (axe-core), full keyboard-only navigation, screen
-              reader spot checks (VoiceOver and NVDA), and manual review of colour contrast and
-              text resizing.
+              reader spot checks (VoiceOver and NVDA), and manual review of colour contrast and text
+              resizing.
             </p>
-            <p className="mt-4 text-sm text-muted">
+            <p className="text-muted mt-4 text-sm">
               {/* TODO: confirm test dates, tools and any audit reference with whoever signs this off before launch. */}
               Review this statement at least once a year, and again after any significant change to
               the website.

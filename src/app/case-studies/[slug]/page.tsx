@@ -33,28 +33,20 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 function GlanceRow({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="border-t border-hairline py-3 first:border-t-0 first:pt-0">
+    <div className="border-hairline border-t py-3 first:border-t-0 first:pt-0">
       <dt className="eyebrow">{label}</dt>
-      <dd className="mt-1 text-sm leading-relaxed text-body">{children}</dd>
+      <dd className="text-body mt-1 text-sm leading-relaxed">{children}</dd>
     </div>
   )
 }
 
-function Block({
-  id,
-  title,
-  children,
-}: {
-  id: string
-  title: string
-  children: React.ReactNode
-}) {
+function Block({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
     <section aria-labelledby={id} className="mt-12 first:mt-0">
       <h2 id={id} className="text-2xl sm:text-[1.75rem]">
         {title}
       </h2>
-      <div className="mt-4 space-y-4 leading-relaxed text-body">{children}</div>
+      <div className="text-body mt-4 space-y-4 leading-relaxed">{children}</div>
     </section>
   )
 }
@@ -65,11 +57,11 @@ export default async function CaseStudyPage({ params }: Params) {
   if (!study) notFound()
 
   return (
-    <article className="pb-20 pt-12 sm:pt-16 lg:pb-28">
+    <article className="pt-12 pb-20 sm:pt-16 lg:pb-28">
       <Container>
         <Link
           href="/case-studies"
-          className="no-print inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-oxblood"
+          className="no-print text-muted hover:text-oxblood inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           All case studies
@@ -79,17 +71,15 @@ export default async function CaseStudyPage({ params }: Params) {
           <p className="eyebrow">
             {study.sector} · {study.duration}
           </p>
-          <h1 className="mt-4 text-3xl leading-[1.12] sm:text-4xl lg:text-[3rem]">
-            {study.title}
-          </h1>
-          <p className="mt-5 text-lg leading-relaxed text-muted">{study.client}</p>
+          <h1 className="mt-4 text-3xl leading-[1.12] sm:text-4xl lg:text-[3rem]">{study.title}</h1>
+          <p className="text-muted mt-5 text-lg leading-relaxed">{study.client}</p>
         </div>
 
         <div className="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Sidebar */}
-          <aside className="lg:col-span-4 lg:order-2">
-            <div className="at-a-glance border border-hairline bg-card p-7 lg:sticky lg:top-24">
-              <h2 className="font-display text-lg font-medium text-ink">At a glance</h2>
+          <aside className="lg:order-2 lg:col-span-4">
+            <div className="at-a-glance border-hairline bg-card border p-7 lg:sticky lg:top-24">
+              <h2 className="font-display text-ink text-lg font-medium">At a glance</h2>
               <dl className="mt-5">
                 <GlanceRow label="Sector">{study.sector}</GlanceRow>
                 <GlanceRow label="Duration">{study.duration}</GlanceRow>
@@ -99,7 +89,7 @@ export default async function CaseStudyPage({ params }: Params) {
                     {study.technologies.map((tech) => (
                       <li
                         key={tech}
-                        className="border border-hairline px-2 py-0.5 text-xs text-muted"
+                        className="border-hairline text-muted border px-2 py-0.5 text-xs"
                       >
                         {tech}
                       </li>
@@ -111,7 +101,7 @@ export default async function CaseStudyPage({ params }: Params) {
           </aside>
 
           {/* Body */}
-          <div className="lg:col-span-8 lg:order-1">
+          <div className="lg:order-1 lg:col-span-8">
             <Block id="challenge" title="The challenge">
               {study.challenge.map((p, i) => (
                 <p key={i}>{p}</p>
@@ -128,7 +118,7 @@ export default async function CaseStudyPage({ params }: Params) {
               <ul className="space-y-3">
                 {study.delivered.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 bg-oxblood" />
+                    <span aria-hidden="true" className="bg-oxblood mt-2 h-1.5 w-1.5 shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -136,11 +126,11 @@ export default async function CaseStudyPage({ params }: Params) {
             </Block>
 
             {/* Pull quote */}
-            <figure className="my-12 border-l-2 border-oxblood pl-6 sm:pl-8">
-              <blockquote className="font-display text-2xl leading-snug text-ink sm:text-[1.75rem]">
+            <figure className="border-oxblood my-12 border-l-2 pl-6 sm:pl-8">
+              <blockquote className="font-display text-ink text-2xl leading-snug sm:text-[1.75rem]">
                 {study.quote.text}
               </blockquote>
-              <figcaption className="mt-4 text-sm text-muted">
+              <figcaption className="text-muted mt-4 text-sm">
                 — {study.quote.attribution}
               </figcaption>
             </figure>
@@ -154,8 +144,8 @@ export default async function CaseStudyPage({ params }: Params) {
         </div>
 
         {/* Closing CTA */}
-        <div className="no-print mt-16 border-t border-hairline pt-10">
-          <p className="text-lg text-ink">Working on something similar?</p>
+        <div className="no-print border-hairline mt-16 border-t pt-10">
+          <p className="text-ink text-lg">Working on something similar?</p>
           <div className="mt-5">
             <Button href="/contact" variant="secondary">
               Discuss a programme
