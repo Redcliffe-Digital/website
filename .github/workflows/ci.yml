@@ -72,22 +72,17 @@ jobs:
       - name: Build (static export)
         run: pnpm build
 
-      - name: Set up Chrome and Chromedriver
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: stable
-          install-chromedriver: true
-
       # Serve, wait and scan in a single step: a process backgrounded with `&`
-      # only survives for the duration of the step that started it. Pass the
-      # matched chromedriver from setup-chrome via --chromedriver-path, otherwise
-      # axe-core/cli uses its own bundled (newer) driver and Chrome versions skew.
+      # only survives for the duration of the step that started it. The runner
+      # image ships a matched Chrome + ChromeDriver pair, so we point axe at the
+      # runner's own driver ($CHROMEWEBDRIVER) rather than letting axe-core/cli
+      # pull its own (newer) driver, which skews against the installed Chrome.
       - name: Run axe-core
         run: |
           npx --yes serve@14 out -l 3000 &
           npx --yes wait-on http://localhost:3000 --timeout 60000
           npx --yes @axe-core/cli \
-            --chromedriver-path "$(which chromedriver)" \
+            --chromedriver-path "${CHROMEWEBDRIVER}/chromedriver" \
             http://localhost:3000/ \
             http://localhost:3000/what-we-do/ \
             http://localhost:3000/case-studies/ \
