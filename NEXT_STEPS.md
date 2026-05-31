@@ -48,10 +48,11 @@ comment. Search the repo for `TODO` and `placeholder` to find them all.
 
 ### Wiring and integrations
 
-- [ ] **Contact form backend** — the form currently posts to a `mailto:` fallback. Wire
-      it to **Formspree** (fastest) or an **SES-backed Lambda + API Gateway** (keeps it in
-      AWS). Validate the existing honeypot field (`company-website`) server-side and add a
-      success/thank-you state. See `src/app/contact/page.tsx`.
+- [ ] **Contact form Formspree ID** — the form (`src/components/ContactForm.tsx`) now
+      submits to **Formspree** via fetch, with in-page success/error states and a `_gotcha`
+      honeypot Formspree filters automatically. Create a free form at https://formspree.io
+      and replace `YOUR_FORM_ID` in `site.formspreeEndpoint` (`src/lib/site.ts`). Until then,
+      submissions will fail and the form points visitors at the direct email address.
 - [ ] **GitHub "View source" link** — footer points at a placeholder repo URL
       (`src/components/Footer.tsx`). Update once the repo is public, or remove the link.
 - [ ] **`security@` inbox** — confirm it is monitored, and review the `Expires` date in

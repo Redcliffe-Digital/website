@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Mail, MapPin, Phone, FileText } from 'lucide-react'
 import { Container } from '@/components/Container'
 import { PageHeader } from '@/components/PageHeader'
-import { Button } from '@/components/Button'
+import { ContactForm } from '@/components/ContactForm'
 import { formattedAddress, site } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -12,10 +12,6 @@ export const metadata: Metadata = {
     'Tell us what you’re working on. We come back within one working day. Listed on G-Cloud 14 and Digital Outcomes 6.',
   alternates: { canonical: '/contact' },
 }
-
-const fieldClass =
-  'mt-2 w-full border border-hairline bg-card px-4 py-3 text-body placeholder:text-muted/60 focus:border-oxblood'
-const labelClass = 'block text-sm font-medium text-ink'
 
 export default function ContactPage() {
   return (
@@ -30,87 +26,7 @@ export default function ContactPage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             {/* Form */}
             <div className="lg:col-span-7">
-              {/*
-                Static-export note: this form posts to a mailto: fallback so it
-                works without a backend. Before launch, wire it to a Formspree
-                form or an SES-backed Lambda (see NEXT_STEPS.md) and validate the
-                honeypot field server-side.
-              */}
-              <form
-                action={`mailto:${site.email}`}
-                method="post"
-                encType="text/plain"
-                className="max-w-xl"
-              >
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <div className="sm:col-span-2">
-                    <label htmlFor="name" className={labelClass}>
-                      Name
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      autoComplete="name"
-                      required
-                      className={fieldClass}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className={labelClass}>
-                      Work email
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      autoComplete="email"
-                      required
-                      className={fieldClass}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="organisation" className={labelClass}>
-                      Organisation
-                    </label>
-                    <input
-                      id="organisation"
-                      name="organisation"
-                      type="text"
-                      autoComplete="organization"
-                      className={fieldClass}
-                    />
-                  </div>
-                  <div className="sm:col-span-2">
-                    <label htmlFor="message" className={labelClass}>
-                      How can we help?
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={6}
-                      required
-                      className={fieldClass}
-                    />
-                  </div>
-                </div>
-
-                {/* Honeypot — hidden from people, tempting to bots. Validated server-side once wired up. */}
-                <div aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 overflow-hidden">
-                  <label htmlFor="company-website">Leave this field empty</label>
-                  <input
-                    id="company-website"
-                    name="company-website"
-                    type="text"
-                    tabIndex={-1}
-                    autoComplete="off"
-                  />
-                </div>
-
-                <Button type="submit" variant="primary" className="mt-8">
-                  Send message
-                </Button>
-              </form>
+              <ContactForm />
             </div>
 
             {/* Direct details */}
