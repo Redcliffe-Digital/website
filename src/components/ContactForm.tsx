@@ -1,48 +1,23 @@
 'use client'
 
-import { useState } from 'react'
+import { useForm, ValidationError } from '@formspree/react'
 import { Button } from '@/components/Button'
 import { site } from '@/lib/site'
 
 const fieldClass =
   'mt-2 w-full border border-hairline bg-card px-4 py-3 text-body placeholder:text-muted/60 focus:border-oxblood'
 const labelClass = 'block text-sm font-medium text-ink'
-
-type Status = 'idle' | 'submitting' | 'success' | 'error'
+const errorClass = 'text-oxblood mt-2 block text-sm'
 
 /**
- * Contact form, submitted to Formspree via fetch so we can show an in-page
- * success state instead of redirecting away. Falls back gracefully: if the
- * endpoint is unset or the request fails, we surface a clear error pointing the
- * visitor at the direct email address.
+ * Contact form, submitted to Formspree via @formspree/react's useForm hook so we
+ * can show an in-page success state instead of redirecting away. The hook
+ * handles submission, field-level validation errors and the submitting flag.
  */
 export function ContactForm() {
-  const [status, setStatus] = useState<Status>('idle')
+  const [state, handleSubmit] = useForm(site.formspreeId)
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const form = event.currentTarget
-    const data = new FormData(form)
-
-    setStatus('submitting')
-    try {
-      const response = await fetch(site.formspreeEndpoint, {
-        method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
-      })
-      if (response.ok) {
-        setStatus('success')
-        form.reset()
-      } else {
-        setStatus('error')
-      }
-    } catch {
-      setStatus('error')
-    }
-  }
-
-  if (status === 'success') {
+  if (state.succeeded) {
     return (
       <div className="border-hairline bg-stripe max-w-xl border p-8" role="status">
         <p className="text-ink text-lg font-medium">Thanks — your message is on its way.</p>
@@ -72,6 +47,12 @@ export function ContactForm() {
             required
             className={fieldClass}
           />
+          <ValidationError
+            prefix="Name"
+            field="name"
+            errors={state.errors}
+            className={errorClass}
+          />
         </div>
         <div>
           <label htmlFor="email" className={labelClass}>
@@ -84,6 +65,12 @@ export function ContactForm() {
             autoComplete="email"
             required
             className={fieldClass}
+          />
+          <ValidationError
+            prefix="Email"
+            field="email"
+            errors={state.errors}
+            className={errorClass}
           />
         </div>
         <div>
@@ -103,6 +90,12 @@ export function ContactForm() {
             How can we help?
           </label>
           <textarea id="message" name="message" rows={6} required className={fieldClass} />
+          <ValidationError
+            prefix="Message"
+            field="message"
+            errors={state.errors}
+            className={errorClass}
+          />
         </div>
       </div>
 
@@ -113,19 +106,11 @@ export function ContactForm() {
         <input id="company-website" name="_gotcha" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <Button type="submit" variant="primary" className="mt-8" disabled={status === 'submitting'}>
-        {status === 'submitting' ? 'Sending…' : 'Send message'}
+      <Button type="submit" variant="primary" className="mt-8" disabled={state.submitting}>
+        {state.submitting ? 'Sending…' : 'Send message'}
       </Button>
 
-      {status === 'error' ? (
-        <p className="text-oxblood mt-4 text-sm" role="alert">
-          Something went wrong sending your message. Please email us directly at{' '}
-          <a href={`mailto:${site.email}`} className="link-accent">
-            {site.email}
-          </a>
-          .
-        </p>
-      ) : null}
+      <ValidationError errors={state.errors} className="text-oxblood mt-4 block text-sm" />
     </form>
   )
 }

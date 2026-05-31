@@ -48,11 +48,11 @@ comment. Search the repo for `TODO` and `placeholder` to find them all.
 
 ### Wiring and integrations
 
-- [ ] **Contact form Formspree ID** — the form (`src/components/ContactForm.tsx`) now
-      submits to **Formspree** via fetch, with in-page success/error states and a `_gotcha`
-      honeypot Formspree filters automatically. Create a free form at https://formspree.io
-      and replace `YOUR_FORM_ID` in `site.formspreeEndpoint` (`src/lib/site.ts`). Until then,
-      submissions will fail and the form points visitors at the direct email address.
+- [x] **Contact form** — the form (`src/components/ContactForm.tsx`) submits to **Formspree**
+      via the `@formspree/react` `useForm` hook, with in-page success state, field-level
+      `ValidationError` messages and a `_gotcha` honeypot Formspree filters automatically.
+      The form ID lives in `site.formspreeId` (`src/lib/site.ts`). Confirm the form address in
+      the Formspree dashboard on the first submission, then test end-to-end after deploy.
 - [ ] **GitHub "View source" link** — footer points at a placeholder repo URL
       (`src/components/Footer.tsx`). Update once the repo is public, or remove the link.
 - [ ] **`security@` inbox** — confirm it is monitored, and review the `Expires` date in
