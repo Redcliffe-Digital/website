@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Mail, MapPin, Phone, FileText } from 'lucide-react'
+import { Mail, MapPin, Phone } from 'lucide-react'
 import { Container } from '@/components/Container'
 import { PageHeader } from '@/components/PageHeader'
 import { ContactForm } from '@/components/ContactForm'
@@ -9,7 +9,7 @@ import { formattedAddress, site } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'Get in touch',
   description:
-    'Tell us what you’re working on. We come back within one working day. Listed on G-Cloud 14 and Digital Outcomes 6.',
+    'Tell us what you’re working on. We come back within one working day.',
   alternates: { canonical: '/contact' },
 }
 
@@ -75,21 +75,6 @@ export default function ContactPage() {
                   <div>
                     <p className="eyebrow">Office</p>
                     <p className="text-body mt-1">{formattedAddress}</p>
-                  </div>
-                </li>
-                <li className="flex gap-4">
-                  <FileText
-                    className="text-oxblood mt-0.5 h-5 w-5 shrink-0"
-                    strokeWidth={1.75}
-                    aria-hidden="true"
-                  />
-                  <div>
-                    <p className="eyebrow">Procurement</p>
-                    <p className="text-body mt-1 leading-relaxed">
-                      We’re listed on G-Cloud 14 and Digital Outcomes 6. Our supplier ID is{' '}
-                      <span className="font-medium whitespace-nowrap">RDC-2026-008</span>{' '}
-                      <span className="text-muted text-xs">(placeholder)</span>.
-                    </p>
                   </div>
                 </li>
               </ul>
