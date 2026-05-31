@@ -16,7 +16,7 @@ export const site = {
   // Formspree contact-form endpoint. Create a (free) form at https://formspree.io,
   // then replace YOUR_FORM_ID with the ID from your form's integration tab.
   // The endpoint is public by design — safe to commit. TODO: set before launch.
-  formspreeEndpoint: 'https://formspree.io/f/YOUR_FORM_ID',
+  formspreeEndpoint: 'https://formspree.io/f/mojboaew',
   phone: '+44 (0)117 374 9120', // TODO: confirm before launch
   phoneHref: '+441173749120',
   address: {
