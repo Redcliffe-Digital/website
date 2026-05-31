@@ -41,7 +41,7 @@ const whyBullets = [
 ]
 
 // JSON-LD Organization schema. Credentials are listed as hasCredential so the
-// AWS / Cyber Essentials Plus / ISO 27001 accreditations are machine-readable.
+// AWS / Azure / Cyber Essentials Plus / ISO 27001 accreditations are machine-readable.
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -68,7 +68,7 @@ const organizationSchema = {
     {
       '@type': 'EducationalOccupationalCredential',
       credentialCategory: 'certification',
-      name: 'AWS Certified Cloud Practitioner',
+      name: 'Microsoft Certified: Azure Fundamentals',
     },
     {
       '@type': 'EducationalOccupationalCredential',

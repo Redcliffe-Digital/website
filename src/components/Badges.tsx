@@ -10,8 +10,8 @@ import type { ReactNode } from 'react'
  * verification page and used within the awarding body's brand guidelines —
  *   - AWS Certified Developer – Associate: the holder's Credly
  *     badge image + verification URL (https://www.credly.com/badges/<id>).
- *   - AWS Certified Cloud Practitioner: the holder's Credly
- *     badge image + verification URL.
+ *   - Microsoft Certified: Azure Fundamentals: the holder's
+ *     Credly/Microsoft Learn badge image + verification URL.
  *   - Cyber Essentials: the IASME-issued badge (carries the certificate
  *     number) + the entry on the NCSC/IASME certificate register.
  *   - ISO 27001: the UKAS-accredited certification body's mark + certificate
@@ -54,18 +54,15 @@ const BADGES: BadgeDef[] = [
     ),
   },
   {
-    id: 'aws-cloud-practitioner',
-    label: 'AWS Certified Cloud Practitioner',
+    id: 'azure-fundamentals',
+    label: 'Microsoft Certified: Azure Fundamentals',
     art: (
-      <g>
-        {/* Hexagonal "gem" — the shape of the AWS Certified badge family. */}
-        <polygon points="24 5 40 14 40 34 24 43 8 34 8 14" {...stroke} />
-        {/* Cloud, for AWS. */}
-        <g fill="currentColor">
-          <circle cx="21" cy="27" r="4.5" />
-          <circle cx="28" cy="25" r="6" />
-          <rect x="17" y="27" width="15" height="6" rx="3" />
-        </g>
+      // The Microsoft four-square mark.
+      <g fill="currentColor">
+        <rect x="9" y="9" width="13" height="13" />
+        <rect x="26" y="9" width="13" height="13" />
+        <rect x="9" y="26" width="13" height="13" />
+        <rect x="26" y="26" width="13" height="13" />
       </g>
     ),
   },

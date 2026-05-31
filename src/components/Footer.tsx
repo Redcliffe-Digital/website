@@ -66,7 +66,7 @@ export function Footer() {
               showLabels={false}
               ids={[
                 'aws-developer-associate',
-                'aws-cloud-practitioner',
+                'azure-fundamentals',
                 'cyber-essentials',
                 'iso-27001',
               ]}
