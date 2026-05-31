@@ -64,7 +64,12 @@ export function Footer() {
               variant="light"
               size={32}
               showLabels={false}
-              ids={['aws-sa-pro', 'azure-sa-expert', 'cyber-essentials', 'iso-27001', 'g-cloud-14']}
+              ids={[
+                'aws-developer-associate',
+                'aws-cloud-practitioner',
+                'cyber-essentials',
+                'iso-27001',
+              ]}
               className="mt-7"
             />
           </div>

@@ -8,16 +8,14 @@ import type { ReactNode } from 'react'
  *
  * TODO: swap for the official issued assets before launch, each linked to its
  * verification page and used within the awarding body's brand guidelines —
- *   - AWS Certified Solutions Architect – Professional: the holder's Credly
+ *   - AWS Certified Developer – Associate: the holder's Credly
  *     badge image + verification URL (https://www.credly.com/badges/<id>).
- *   - Microsoft Certified: Azure Solutions Architect Expert: the holder's
- *     Credly/Microsoft Learn badge image + verification URL.
+ *   - AWS Certified Cloud Practitioner: the holder's Credly
+ *     badge image + verification URL.
  *   - Cyber Essentials: the IASME-issued badge (carries the certificate
  *     number) + the entry on the NCSC/IASME certificate register.
  *   - ISO 27001: the UKAS-accredited certification body's mark + certificate
  *     reference (use the body's logo, not a generic "ISO" mark).
- *   - G-Cloud 14: the Crown Commercial Service supplier badge + the firm's
- *     listing on the Digital Marketplace.
  *   - Disability Confident: the DWP-issued badge at the correct level
  *     (Committed / Employer / Leader).
  */
@@ -40,8 +38,8 @@ const stroke = {
 
 const BADGES: BadgeDef[] = [
   {
-    id: 'aws-sa-pro',
-    label: 'AWS Certified Solutions Architect – Professional',
+    id: 'aws-developer-associate',
+    label: 'AWS Certified Developer – Associate',
     art: (
       <g>
         {/* Hexagonal "gem" — the shape of the AWS Certified badge family. */}
@@ -56,15 +54,18 @@ const BADGES: BadgeDef[] = [
     ),
   },
   {
-    id: 'azure-sa-expert',
-    label: 'Microsoft Certified: Azure Solutions Architect Expert',
+    id: 'aws-cloud-practitioner',
+    label: 'AWS Certified Cloud Practitioner',
     art: (
-      // The Microsoft four-square mark.
-      <g fill="currentColor">
-        <rect x="9" y="9" width="13" height="13" />
-        <rect x="26" y="9" width="13" height="13" />
-        <rect x="9" y="26" width="13" height="13" />
-        <rect x="26" y="26" width="13" height="13" />
+      <g>
+        {/* Hexagonal "gem" — the shape of the AWS Certified badge family. */}
+        <polygon points="24 5 40 14 40 34 24 43 8 34 8 14" {...stroke} />
+        {/* Cloud, for AWS. */}
+        <g fill="currentColor">
+          <circle cx="21" cy="27" r="4.5" />
+          <circle cx="28" cy="25" r="6" />
+          <rect x="17" y="27" width="15" height="6" rx="3" />
+        </g>
       </g>
     ),
   },
@@ -88,17 +89,6 @@ const BADGES: BadgeDef[] = [
         <path d="M30 30 L34 41 L28.5 38 L27 41 L24 31 Z" fill="currentColor" />
         <circle cx="24" cy="22" r="12" {...stroke} />
         <circle cx="24" cy="22" r="5.5" {...stroke} />
-      </g>
-    ),
-  },
-  {
-    id: 'g-cloud-14',
-    label: 'Crown Commercial Service — G-Cloud 14 Supplier',
-    art: (
-      // A crown, for Crown Commercial Service.
-      <g fill="currentColor">
-        <path d="M10 33 L12 18 L19 25 L24 15 L29 25 L36 18 L38 33 Z" />
-        <rect x="10" y="33" width="28" height="5" rx="1" />
       </g>
     ),
   },
