@@ -170,16 +170,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="fade-up hidden lg:block" aria-hidden="true">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/hero-team.jpg"
-                alt=""
-                width={900}
-                height={1125}
-                className="border-hairline aspect-[4/5] w-full rounded-sm border object-cover"
-                loading="eager"
-                decoding="async"
-              />
+              <NetworkMotif className="h-auto w-full" />
             </div>
           </div>
         </Container>
