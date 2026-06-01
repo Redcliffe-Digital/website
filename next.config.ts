@@ -5,9 +5,9 @@ const nextConfig: NextConfig = {
   // (or any static host) with no Node runtime. See NEXT_STEPS.md.
   output: 'export',
 
-  // Required for GitHub Pages project sites served from a subpath.
-  // Remove this if the site moves to a custom domain or root subdomain.
-  basePath: '/website',
+  // Served from the root of the custom domain (redcliffedigital.co.uk), so no
+  // basePath. If reverting to the GitHub project page served under /website,
+  // restore `basePath: '/website'` here.
 
   // Static export cannot use the Next.js image optimisation server, so serve
   // images as-is. We only ship inline SVG, so this is a safe default.
