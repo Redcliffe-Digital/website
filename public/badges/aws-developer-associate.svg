@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-label="AWS Certified">
+  <text x="40" y="42" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#232F3E">aws</text>
+  <path d="M22 52 C34 60 46 60 58 52" fill="none" stroke="#FF9900" stroke-width="4" stroke-linecap="round"/>
+  <path d="M54 49 l5 3 -3 5" fill="none" stroke="#FF9900" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="40" y="72" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8" letter-spacing="1.5" fill="#232F3E">CERTIFIED</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-label="ISO/IEC 27001 Information Security">
+  <circle cx="40" cy="40" r="33" fill="none" stroke="#1F7A6B" stroke-width="3.5"/>
+  <circle cx="40" cy="40" r="26" fill="#1F7A6B"/>
+  <text x="40" y="37" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#ffffff">ISO</text>
+  <text x="40" y="52" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5" fill="#ffffff">27001</text>
+</svg>
