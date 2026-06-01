@@ -17,8 +17,8 @@ export const site = {
   // integration tab). Used by @formspree/react's useForm. Public by design —
   // safe to commit.
   formspreeId: 'mojboaew',
-  phone: '+44 (0)117 374 9120', // TODO: confirm before launch
-  phoneHref: '+441173749120',
+  phone: '+44 7396 954783',
+  phoneHref: '+447396954783',
   address: {
     line1: 'Flat 14 Hanover Court',
     line2: 'Hanover Street',

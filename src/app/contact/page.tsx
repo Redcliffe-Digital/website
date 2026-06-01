@@ -60,8 +60,7 @@ export default function ContactPage() {
                     <p className="text-body mt-1">
                       <a href={`tel:${site.phoneHref}`} className="hover:text-oxblood">
                         {site.phone}
-                      </a>{' '}
-                      <span className="text-muted text-xs">(placeholder)</span>
+                      </a>
                     </p>
                   </div>
                 </li>

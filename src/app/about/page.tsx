@@ -66,8 +66,9 @@ const companyFacts: { label: string; value: string; placeholder?: boolean }[] = 
   { label: 'Registered name', value: 'Redcliffe Digital Ltd, England and Wales' },
   { label: 'Company number', value: '17197703' },
   { label: 'Registered office', value: formattedAddress },
-  { label: 'VAT number', value: 'GB 432 8821 09', placeholder: true },
-  { label: 'ICO registration', value: 'ZB123456', placeholder: true },
+  // Hidden for now — restore once confirmed:
+  // { label: 'VAT number', value: 'GB 432 8821 09', placeholder: true },
+  // { label: 'ICO registration', value: 'ZB123456', placeholder: true },
 ]
 
 export default function AboutPage() {
