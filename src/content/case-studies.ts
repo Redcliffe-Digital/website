@@ -22,12 +22,15 @@ export interface CaseStudy {
   delivered: string[]
   outcome: string[]
   quote: { text: string; attribution: string }
+  /** Banner image shown at the top of the detail page (in public/images). */
+  image?: string
   order: number
 }
 
 export const caseStudiesBefore: CaseStudy[] = [
   {
     slug: 'threat-intel-rag-pipeline',
+    image: '/images/case-rag-pipeline.jpg',
     sector: 'Cyber security and AI',
     title: 'A self-hosted RAG pipeline that took threat attribution from hours to seconds',
     excerpt:
@@ -75,6 +78,7 @@ export const caseStudiesBefore: CaseStudy[] = [
   },
   {
     slug: 'quant-market-data-platform',
+    image: '/images/case-quant.jpg',
     sector: 'Financial services — Quantitative trading',
     title: 'Replacing a C# monolith with a low-millisecond market-data platform',
     excerpt:
@@ -123,6 +127,7 @@ export const caseStudiesBefore: CaseStudy[] = [
 export const caseStudiesDb: CaseStudy[] = [
   {
     slug: 'threat-intel-detection-warehouse',
+    image: '/images/case-detection-warehouse.jpg',
     sector: 'Cyber security — Data & analytics',
     title: 'Consolidating fragmented detection telemetry into one governed threat-intelligence warehouse',
     excerpt:
@@ -171,6 +176,7 @@ export const caseStudiesDb: CaseStudy[] = [
   },
   {
     slug: 'threat-intel-rag-pipeline',
+    image: '/images/case-rag-pipeline.jpg',
     sector: 'Cyber security and AI',
     title: 'A self-hosted RAG pipeline that took threat attribution from hours to seconds',
     excerpt:
@@ -225,6 +231,7 @@ export const caseStudiesDb: CaseStudy[] = [
   },
   {
     slug: 'quant-market-data-platform',
+    image: '/images/case-quant.jpg',
     sector: 'Financial services — Quantitative trading',
     title: 'Replacing a C# monolith with a low-millisecond market-data platform',
     excerpt:

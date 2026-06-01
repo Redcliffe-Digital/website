@@ -63,7 +63,20 @@ function StudyBody({ study }: { study: CaseStudy }) {
         <p className="text-muted mt-5 text-lg leading-relaxed">{study.client}</p>
       </div>
 
-      <ImagePlaceholder ratio="aspect-[21/9]" label="Case study image" className="no-print mt-10" />
+      {study.image ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={study.image}
+          alt=""
+          width={1600}
+          height={686}
+          className="border-hairline no-print mt-10 aspect-[21/9] w-full rounded-sm border object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <ImagePlaceholder ratio="aspect-[21/9]" label="Case study image" className="no-print mt-10" />
+      )}
 
       <div className="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-16">
         {/* Sidebar */}

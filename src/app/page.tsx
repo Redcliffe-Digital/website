@@ -7,7 +7,6 @@ import { SectionHeading } from '@/components/SectionHeading'
 import { Button } from '@/components/Button'
 import { Badges } from '@/components/Badges'
 import { DataMotif } from '@/components/DataMotif'
-import { ImagePlaceholder } from '@/components/ImagePlaceholder'
 import { CaseStudyCard } from '@/components/CaseStudyCard'
 import { sortedCaseStudiesBefore, sortedCaseStudiesDb } from '@/content/case-studies'
 import { site } from '@/lib/site'
@@ -170,7 +169,18 @@ export default function HomePage() {
                 </Button>
               </div>
             </div>
-            <ImagePlaceholder ratio="aspect-[4/5]" className="fade-up hidden lg:flex" />
+            <div className="fade-up hidden lg:block" aria-hidden="true">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/hero-team.jpg"
+                alt=""
+                width={900}
+                height={1125}
+                className="border-hairline aspect-[4/5] w-full rounded-sm border object-cover"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
           </div>
         </Container>
       </section>
