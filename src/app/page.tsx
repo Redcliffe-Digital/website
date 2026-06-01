@@ -278,7 +278,7 @@ export default function HomePage() {
 
       {/* Why a small firm */}
       <Section stripe ariaLabelledby="why-small-firm-heading">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        <div className="grid items-stretch gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
             <SectionHeading
               as="h2"
@@ -301,14 +301,14 @@ export default function HomePage() {
               ))}
             </ul>
           </div>
-          <div>
+          <div className="h-full">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/why-small-firm.jpg"
               alt="Three senior engineers working through a problem together at a laptop"
               width={1536}
               height={1024}
-              className="border-hairline aspect-[3/2] w-full rounded-sm border object-cover"
+              className="border-hairline h-full w-full rounded-sm border object-cover max-lg:aspect-[3/2]"
               loading="lazy"
               decoding="async"
             />
