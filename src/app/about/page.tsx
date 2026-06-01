@@ -33,32 +33,34 @@ const principles: { title: string; body: string }[] = [
   },
 ]
 
-const team: { initials: string; name: string; role: string; previously: string }[] = [
-  {
-    initials: 'ER',
-    name: 'Eleanor Roper',
-    role: 'Founding Partner, Engineering',
-    previously: 'Goldman Sachs SLT, Maven Securities',
-  },
-  {
-    initials: 'JO',
-    name: 'James Okafor',
-    role: 'Founding Partner, Architecture',
-    previously: 'Citadel Securities, JP Morgan',
-  },
-  {
-    initials: 'PS',
-    name: 'Priya Shah',
-    role: 'Head of SRE',
-    previously: 'Jump Trading, Monzo',
-  },
-  {
-    initials: 'TW',
-    name: 'Tom Whitfield',
-    role: 'Principal Engineer',
-    previously: 'G-Research, GDS',
-  },
-]
+// Team section hidden for now — restore this data and the "The team" section
+// in the JSX below when the real team details are ready.
+// const team: { initials: string; name: string; role: string; previously: string }[] = [
+//   {
+//     initials: 'ER',
+//     name: 'Eleanor Roper',
+//     role: 'Founding Partner, Engineering',
+//     previously: 'Goldman Sachs SLT, Maven Securities',
+//   },
+//   {
+//     initials: 'JO',
+//     name: 'James Okafor',
+//     role: 'Founding Partner, Architecture',
+//     previously: 'Citadel Securities, JP Morgan',
+//   },
+//   {
+//     initials: 'PS',
+//     name: 'Priya Shah',
+//     role: 'Head of SRE',
+//     previously: 'Jump Trading, Monzo',
+//   },
+//   {
+//     initials: 'TW',
+//     name: 'Tom Whitfield',
+//     role: 'Principal Engineer',
+//     previously: 'G-Research, GDS',
+//   },
+// ]
 
 const companyFacts: { label: string; value: string; placeholder?: boolean }[] = [
   { label: 'Registered name', value: 'Redcliffe Digital Ltd, England and Wales' },
@@ -97,7 +99,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* The team */}
+      {/* The team — hidden for now, restore when real team details are ready.
       <section className="bg-stripe py-16 sm:py-20 lg:py-24" aria-labelledby="the-team">
         <Container>
           <h2 id="the-team" className="text-2xl sm:text-3xl">
@@ -128,6 +130,7 @@ export default function AboutPage() {
           </ul>
         </Container>
       </section>
+      */}
 
       {/* Company */}
       <section className="py-16 sm:py-20 lg:py-24" aria-labelledby="company">

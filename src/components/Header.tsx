@@ -35,8 +35,9 @@ export function Header() {
           </nav>
         </div>
       </Container>
-      {/* Narrow-screen nav row */}
-      <nav aria-label="Primary" className="border-hairline border-t sm:hidden">
+      {/* Narrow-screen nav row. Distinct label so the two responsive nav
+          landmarks stay unique even when both are present in the DOM. */}
+      <nav aria-label="Primary (mobile)" className="border-hairline border-t sm:hidden">
         <Container>
           <ul className="flex flex-wrap items-center gap-x-5 gap-y-1 py-3">
             {nav.map((item) => (

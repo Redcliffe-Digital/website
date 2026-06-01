@@ -8,8 +8,7 @@ import { formattedAddress, site } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Get in touch',
-  description:
-    'Tell us what you’re working on. We come back within one working day.',
+  description: 'Tell us what you’re working on. We come back within one working day.',
   alternates: { canonical: '/contact' },
 }
 

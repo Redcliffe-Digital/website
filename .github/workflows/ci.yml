@@ -77,13 +77,20 @@ jobs:
       # pull its own (newer) driver, which skews against the installed Chrome.
       - name: Run axe-core
         run: |
-          npx --yes serve@14 out -l 3000 &
-          npx --yes wait-on http://localhost:3000 --timeout 60000
+          # The site is exported with basePath '/website', so its CSS and JS
+          # resolve at /website/*. Serve the export under that subpath so the
+          # responsive styles actually load and axe tests the pages exactly as
+          # they are deployed on GitHub Pages (otherwise every asset 404s and the
+          # page is scanned unstyled).
+          mkdir -p _site/website
+          cp -r out/. _site/website/
+          npx --yes serve@14 _site -l 3000 &
+          npx --yes wait-on http://localhost:3000/website/ --timeout 60000
           npx --yes @axe-core/cli \
             --chromedriver-path "${CHROMEWEBDRIVER}/chromedriver" \
-            http://localhost:3000/ \
-            http://localhost:3000/what-we-do/ \
-            http://localhost:3000/case-studies/ \
-            http://localhost:3000/about/ \
-            http://localhost:3000/contact/ \
+            http://localhost:3000/website/ \
+            http://localhost:3000/website/what-we-do/ \
+            http://localhost:3000/website/case-studies/ \
+            http://localhost:3000/website/about/ \
+            http://localhost:3000/website/contact/ \
             --exit
