@@ -7,7 +7,7 @@ import { sortedCaseStudies } from '@/content/case-studies'
 export const metadata: Metadata = {
   title: 'Case studies',
   description:
-    'Recent work in central government, the Lloyd’s insurance market and local government. Some clients ask not to be named — we honour that.',
+    'Recent work in cyber security, applied AI and quantitative trading. Some clients ask not to be named — we honour that.',
   alternates: { canonical: '/case-studies' },
 }
 
