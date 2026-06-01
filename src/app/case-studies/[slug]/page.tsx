@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { Container } from '@/components/Container'
 import { Button } from '@/components/Button'
 import { allCaseStudySlugs, getCaseStudy, type CaseStudy } from '@/content/case-studies'
+import { ImagePlaceholder } from '@/components/ImagePlaceholder'
 import { site } from '@/lib/site'
 
 interface Params {
@@ -61,6 +62,8 @@ function StudyBody({ study }: { study: CaseStudy }) {
         <h1 className="mt-4 text-3xl leading-[1.12] sm:text-4xl lg:text-[3rem]">{study.title}</h1>
         <p className="text-muted mt-5 text-lg leading-relaxed">{study.client}</p>
       </div>
+
+      <ImagePlaceholder ratio="aspect-[21/9]" label="Case study image" className="no-print mt-10" />
 
       <div className="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-16">
         {/* Sidebar */}

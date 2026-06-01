@@ -7,6 +7,7 @@ import { SectionHeading } from '@/components/SectionHeading'
 import { Button } from '@/components/Button'
 import { Badges } from '@/components/Badges'
 import { DataMotif } from '@/components/DataMotif'
+import { ImagePlaceholder } from '@/components/ImagePlaceholder'
 import { CaseStudyCard } from '@/components/CaseStudyCard'
 import { sortedCaseStudiesBefore, sortedCaseStudiesDb } from '@/content/case-studies'
 import { site } from '@/lib/site'
@@ -149,24 +150,27 @@ export default function HomePage() {
       {/* Hero — default variant */}
       <section className="flex min-h-[60vh] items-center py-20 sm:py-24" data-v="before">
         <Container>
-          <div className="fade-up max-w-3xl">
-            <p className="eyebrow">UK-based technology consultancy</p>
-            <h1 className="mt-5 text-4xl leading-[1.1] sm:text-5xl lg:text-[4rem]">
-              Engineering systems where the cost of failure is measured in millions.
-            </h1>
-            <p className="text-muted mt-7 max-w-[56ch] text-lg leading-relaxed sm:text-xl">
-              Redcliffe Digital is a small team of senior engineers, architects and SREs. We learned
-              our craft building trading systems where a five-second outage is a board-level
-              incident. We now apply that discipline to public sector technology.
-            </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:gap-4">
-              <Button href="/what-we-do" variant="primary">
-                See how we work
-              </Button>
-              <Button href="/contact" variant="secondary">
-                Get in touch
-              </Button>
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,420px)] lg:gap-16">
+            <div className="fade-up max-w-3xl">
+              <p className="eyebrow">UK-based technology consultancy</p>
+              <h1 className="mt-5 text-4xl leading-[1.1] sm:text-5xl lg:text-[4rem]">
+                Engineering systems where the cost of failure is measured in millions.
+              </h1>
+              <p className="text-muted mt-7 max-w-[56ch] text-lg leading-relaxed sm:text-xl">
+                Redcliffe Digital is a small team of senior engineers, architects and SREs. We
+                learned our craft building trading systems where a five-second outage is a
+                board-level incident. We now apply that discipline to public sector technology.
+              </p>
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:gap-4">
+                <Button href="/what-we-do" variant="primary">
+                  See how we work
+                </Button>
+                <Button href="/contact" variant="secondary">
+                  Get in touch
+                </Button>
+              </div>
             </div>
+            <ImagePlaceholder ratio="aspect-[4/5]" className="fade-up hidden lg:flex" />
           </div>
         </Container>
       </section>
