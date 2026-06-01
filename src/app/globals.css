@@ -191,3 +191,16 @@
     page-break-inside: avoid;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Site A/B variant toggle (?v=db)                                     */
+/* Default shows [data-v="before"] blocks; html.v-db swaps to          */
+/* [data-v="db"]. The class is set pre-paint by the script in          */
+/* layout.tsx, so there is no flash of the wrong variant.              */
+/* ------------------------------------------------------------------ */
+:root:not(.v-db) [data-v='db'] {
+  display: none !important;
+}
+:root.v-db [data-v='before'] {
+  display: none !important;
+}

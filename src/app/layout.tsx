@@ -60,7 +60,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-GB" className={`${fraunces.variable} ${inter.variable}`}>
+    <html
+      lang="en-GB"
+      className={`${fraunces.variable} ${inter.variable}`}
+      suppressHydrationWarning
+    >
       {/*
         Analytics: none by default — no cookies, no third-party scripts, so no
         cookie banner is required. To enable privacy-respecting, cookieless
@@ -75,6 +79,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         TODO: confirm the analytics decision before launch.
       */}
       <body className="flex min-h-screen flex-col">
+        {/*
+          Variant toggle: a client link with ?v=db shows the data-warehouse
+          variant; the default URL shows the standard site. The choice sticks
+          for the session. Runs before paint to avoid a flash of the wrong
+          variant; the gating itself is pure CSS (see globals.css).
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var p=new URLSearchParams(window.location.search);var v=p.get('v');if(v){try{sessionStorage.setItem('site-variant',v)}catch(e){}}else{try{v=sessionStorage.getItem('site-variant')}catch(e){}}if(v==='db'){document.documentElement.classList.add('v-db')}}catch(e){}})();",
+          }}
+        />
         <a
           href="#main-content"
           className="focus:bg-ink sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"

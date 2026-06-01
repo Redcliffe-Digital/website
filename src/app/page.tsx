@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Cpu, GitBranch, ShieldCheck } from 'lucide-react'
+import { ArrowRight, Cpu, Database, GitBranch, GitMerge, Layers, ShieldCheck } from 'lucide-react'
 import { Container } from '@/components/Container'
 import { Section } from '@/components/Section'
 import { SectionHeading } from '@/components/SectionHeading'
 import { Button } from '@/components/Button'
 import { Badges } from '@/components/Badges'
+import { DataMotif } from '@/components/DataMotif'
 import { CaseStudyCard } from '@/components/CaseStudyCard'
-import { sortedCaseStudies } from '@/content/case-studies'
+import { sortedCaseStudiesBefore, sortedCaseStudiesDb } from '@/content/case-studies'
 import { site } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 }
 
-const practices = [
+const practicesBefore = [
   {
     icon: Cpu,
     title: 'Platform engineering',
@@ -30,6 +31,59 @@ const practices = [
     icon: GitBranch,
     title: 'Delivery in the open',
     body: 'Small, embedded teams that work in the open alongside civil servants. We leave you with running software, documentation, and a team that no longer needs us.',
+  },
+]
+
+const practicesDb = [
+  {
+    icon: Database,
+    title: 'Data warehouse engineering',
+    body: 'Warehouses and lakehouses on Snowflake, BigQuery, Redshift and Databricks — modelled for correctness, partitioned for scale, and governed for regulated and sensitive data. Every published figure traces back to its source row.',
+  },
+  {
+    icon: Cpu,
+    title: 'Platform engineering',
+    body: 'Cloud-native systems on AWS and Azure, built to the GDS Service Standard and the Technology Code of Practice. We do the unglamorous parts well — observability, infrastructure as code, incident response runbooks.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Trading-grade resilience',
+    body: 'We design for the long tail. Disaster recovery, chaos testing, capacity planning, and the kind of pre-mortems that surface the failure mode no-one wanted to talk about.',
+  },
+]
+
+// Capability tiles for the data-warehouse section — written to mirror what a
+// data & analytics procurement actually evaluates.
+const warehouseCapabilities = [
+  {
+    icon: GitMerge,
+    title: 'Ingestion that does not lie',
+    body: 'Log-based change-data-capture for freshness, idempotent batch loads where nightly is right. Every load is replayable, so a bad transformation is a redeploy — not a data-loss incident.',
+  },
+  {
+    icon: Layers,
+    title: 'Modelling for one answer',
+    body: 'Conformed dimensions and facts in the Kimball tradition, layered raw → core → marts. Two analysts asking the same question get the same number, every time.',
+  },
+  {
+    icon: GitBranch,
+    title: 'Lineage end to end',
+    body: 'Version-controlled, tested dbt transformations and automatic lineage. Any published figure traces back through the model to the exact source row that produced it.',
+  },
+  {
+    icon: Cpu,
+    title: 'Scale and cost held flat',
+    body: 'Partitioning and clustering that keep tens-of-terabytes queries fast, with cost attribution so a per-query bill never becomes a nasty surprise.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Governance by design',
+    body: 'Classification at ingestion, least-privilege auditable access, and retention and erasure enforced by the pipeline — so a deletion request provably reaches every derived table. Built for regulated and sensitive data from the first sprint.',
+  },
+  {
+    icon: Database,
+    title: 'Schema evolution, not breakage',
+    body: 'Explicit data contracts, backward- and forward-compatible encodings, and migrations tested against real historic data. Sources change; the warehouse bends rather than breaks.',
   },
 ]
 
@@ -92,8 +146,8 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
 
-      {/* Hero */}
-      <section className="flex min-h-[60vh] items-center py-20 sm:py-24">
+      {/* Hero — default variant */}
+      <section className="flex min-h-[60vh] items-center py-20 sm:py-24" data-v="before">
         <Container>
           <div className="fade-up max-w-3xl">
             <p className="eyebrow">UK-based technology consultancy</p>
@@ -117,6 +171,37 @@ export default function HomePage() {
         </Container>
       </section>
 
+      {/* Hero — data-warehouse variant */}
+      <section className="flex min-h-[60vh] items-center py-20 sm:py-24" data-v="db">
+        <Container>
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,400px)] lg:gap-16">
+            <div className="fade-up max-w-3xl">
+              <p className="eyebrow">Data platform &amp; warehouse engineering</p>
+              <h1 className="mt-5 text-4xl leading-[1.1] sm:text-5xl lg:text-[4rem]">
+                Data platforms engineered for when the numbers have to be right.
+              </h1>
+              <p className="text-muted mt-7 max-w-[56ch] text-lg leading-relaxed sm:text-xl">
+                Redcliffe Digital is a small team of senior engineers building the warehouses,
+                pipelines and data systems organisations depend on — modelled for correctness and
+                built to scale. We learned the craft moving sub-millisecond market data, where a
+                wrong number costs millions, and we bring that discipline to everything we build.
+              </p>
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:gap-4">
+                <Button href="/what-we-do" variant="primary">
+                  See how we work
+                </Button>
+                <Button href="/contact" variant="secondary">
+                  Get in touch
+                </Button>
+              </div>
+            </div>
+            <div className="fade-up hidden lg:block" aria-hidden="true">
+              <DataMotif className="h-auto w-full" />
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* Trust strip */}
       <div className="border-hairline bg-stripe border-y">
         <Container className="py-8">
@@ -128,8 +213,17 @@ export default function HomePage() {
       {/* What we do preview */}
       <Section ariaLabelledby="what-we-do-heading">
         <SectionHeading as="h2" id="what-we-do-heading" title="What we do" className="max-w-2xl" />
-        <div className="mt-12 grid gap-10 md:grid-cols-3 lg:gap-12">
-          {practices.map(({ icon: Icon, title, body }) => (
+        <div data-v="before" className="mt-12 grid gap-10 md:grid-cols-3 lg:gap-12">
+          {practicesBefore.map(({ icon: Icon, title, body }) => (
+            <div key={title}>
+              <Icon className="text-oxblood h-7 w-7" strokeWidth={1.5} aria-hidden="true" />
+              <h3 className="font-display text-ink mt-5 text-xl font-medium">{title}</h3>
+              <p className="text-body mt-3 leading-relaxed">{body}</p>
+            </div>
+          ))}
+        </div>
+        <div data-v="db" className="mt-12 grid gap-10 md:grid-cols-3 lg:gap-12">
+          {practicesDb.map(({ icon: Icon, title, body }) => (
             <div key={title}>
               <Icon className="text-oxblood h-7 w-7" strokeWidth={1.5} aria-hidden="true" />
               <h3 className="font-display text-ink mt-5 text-xl font-medium">{title}</h3>
@@ -145,6 +239,42 @@ export default function HomePage() {
           See all services
         </Link>
       </Section>
+
+      {/* Data warehouse capability — data-warehouse variant only */}
+      <div data-v="db">
+        <Section stripe ariaLabelledby="warehouse-heading">
+        <SectionHeading
+          as="h2"
+          id="warehouse-heading"
+          eyebrow="Our core practice"
+          title="How we build a data warehouse"
+          className="max-w-2xl"
+        />
+        <p className="text-body mt-6 max-w-2xl text-lg leading-relaxed">
+          A warehouse is judged on three things, and we engineer each as a first-class requirement:
+          that it stays <span className="text-ink">reliable</span> when a source misbehaves, that it
+          stays <span className="text-ink">scalable</span> as volume grows, and that it stays{' '}
+          <span className="text-ink">maintainable</span> for the team that inherits it. Most we are
+          asked to rescue failed on the last one long before the others.
+        </p>
+        <div className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+          {warehouseCapabilities.map(({ icon: Icon, title, body }) => (
+            <div key={title}>
+              <Icon className="text-oxblood h-7 w-7" strokeWidth={1.5} aria-hidden="true" />
+              <h3 className="font-display text-ink mt-5 text-lg font-medium">{title}</h3>
+              <p className="text-body mt-3 text-[0.95rem] leading-relaxed">{body}</p>
+            </div>
+          ))}
+        </div>
+        <Link
+          href="/what-we-do#data-and-analytics"
+          className="link-accent mt-12 inline-flex items-center gap-1.5 text-sm"
+        >
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          Read the full data practice
+        </Link>
+        </Section>
+      </div>
 
       {/* Why a small firm */}
       <Section stripe ariaLabelledby="why-small-firm-heading">
@@ -184,8 +314,13 @@ export default function HomePage() {
           eyebrow="Case studies"
           title="Selected work"
         />
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {sortedCaseStudies.map((study) => (
+        <div data-v="before" className="mt-12 grid gap-6 md:grid-cols-3">
+          {sortedCaseStudiesBefore.map((study) => (
+            <CaseStudyCard key={study.slug} study={study} />
+          ))}
+        </div>
+        <div data-v="db" className="mt-12 grid gap-6 md:grid-cols-3">
+          {sortedCaseStudiesDb.map((study) => (
             <CaseStudyCard key={study.slug} study={study} />
           ))}
         </div>
