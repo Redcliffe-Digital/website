@@ -80,15 +80,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       */}
       <body className="flex min-h-screen flex-col">
         {/*
-          Variant toggle: a client link with ?v=db shows the data-warehouse
-          variant; the default URL shows the standard site. The choice sticks
-          for the session. Runs before paint to avoid a flash of the wrong
-          variant; the gating itself is pure CSS (see globals.css).
+          Variant toggle. ?v=db shows the data-warehouse variant and sticks for
+          the session (so click-throughs stay on it); any other ?v value (e.g.
+          ?v=default) clears it back to the standard site; with no ?v param the
+          last sticky choice is used. Runs before paint to avoid a flash; the
+          gating itself is pure CSS (see globals.css).
         */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var p=new URLSearchParams(window.location.search);var v=p.get('v');if(v){try{sessionStorage.setItem('site-variant',v)}catch(e){}}else{try{v=sessionStorage.getItem('site-variant')}catch(e){}}if(v==='db'){document.documentElement.classList.add('v-db')}}catch(e){}})();",
+              "(function(){try{var p=new URLSearchParams(window.location.search);var v=p.get('v');if(v!==null){if(v==='db'){try{sessionStorage.setItem('site-variant','db')}catch(e){}}else{try{sessionStorage.removeItem('site-variant')}catch(e){}v='before'}}else{try{v=sessionStorage.getItem('site-variant')}catch(e){}}var c=document.documentElement.classList;if(v==='db'){c.add('v-db')}else{c.remove('v-db')}}catch(e){}})();",
           }}
         />
         <a
