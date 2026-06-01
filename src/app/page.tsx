@@ -278,7 +278,7 @@ export default function HomePage() {
 
       {/* Why a small firm */}
       <Section stripe ariaLabelledby="why-small-firm-heading">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
             <SectionHeading
               as="h2"
@@ -292,9 +292,7 @@ export default function HomePage() {
               bench, no upward delegation. The person you meet at the kick-off is the person writing
               the code.
             </p>
-          </div>
-          <div className="lg:pt-16">
-            <ul className="divide-hairline border-hairline divide-y border-y">
+            <ul className="divide-hairline border-hairline mt-8 divide-y border-y">
               {whyBullets.map((bullet) => (
                 <li key={bullet} className="flex items-start gap-3 py-4">
                   <span aria-hidden="true" className="bg-oxblood mt-2 h-1.5 w-1.5 shrink-0" />
@@ -302,6 +300,18 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
+          </div>
+          <div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/why-small-firm.jpg"
+              alt="Three senior engineers working through a problem together at a laptop"
+              width={1536}
+              height={1024}
+              className="border-hairline aspect-[3/2] w-full rounded-sm border object-cover"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </Section>
