@@ -159,7 +159,8 @@ export const caseStudiesBefore: CaseStudy[] = [
     ],
     quote: {
       text: 'They built something our researchers actually use, and that we can stand behind in print. It turned a pile of data into answers the whole team can get at themselves.',
-      attribution: 'Professor of Psychology, School of Psychology, Keele University',
+      attribution:
+        'Professor Nicky Edelstyn, School of Psychology, Keele University, and President of the British Neuropsychological Society (2020–2023)',
     },
     order: 3,
   },
@@ -353,7 +354,8 @@ export const caseStudiesDb: CaseStudy[] = [
     ],
     quote: {
       text: 'They built something our researchers actually use, and that we can stand behind in print. It turned a pile of data into answers the whole team can get at themselves.',
-      attribution: 'Professor of Psychology, School of Psychology, Keele University',
+      attribution:
+        'Professor Nicky Edelstyn, School of Psychology, Keele University, and President of the British Neuropsychological Society (2020–2023)',
     },
     order: 4,
   },
