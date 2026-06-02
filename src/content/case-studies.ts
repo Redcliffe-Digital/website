@@ -122,6 +122,46 @@ export const caseStudiesBefore: CaseStudy[] = [
     },
     order: 2,
   },
+  {
+    slug: 'behavioural-research-analytics-tool',
+    sector: 'Academic research / Data & analytics',
+    title: 'An R/Shiny analytics tool that put behavioural research data in non-technical hands',
+    excerpt:
+      'The School of Psychology at Keele University had large volumes of behavioural and observational data and no way for non-technical staff to interrogate it. We designed, built and deployed an interactive R/Shiny tool, co-designed with the researchers and now used by 15+ staff.',
+    client: 'The School of Psychology, Keele University',
+    duration: '6 months',
+    teamSize: '2: one data scientist, one delivery lead',
+    technologies: ['R', 'R / Shiny', 'Tidyverse', 'Git', 'CI/CD'],
+    challenge: [
+      'In a research-led engagement, the School of Psychology at Keele University had more behavioural and observational research data than it could make use of. The data was there, but interrogating it meant going through someone who could write R, and the people who needed the answers (researchers and non-technical staff alike) could not. The brief was to put that capability directly in their hands.',
+      'The data itself was awkward in all the ways real research data is. It arrived as datasets the researchers uploaded themselves, carrying the usual problems: missing values, observer effects, and irregular, repeated-measures sampling that does not sit neatly in a table. Anything we built had to validate what came in and flag it before it reached an analysis, because a tool that quietly computes on bad data is worse than no tool at all.',
+      'It also had to be honest about uncertainty. Estimating a distribution over a continuous response variable and reporting a single number, with no sense of how confident that number was, would have been worse than useless to researchers who knew better. The audience had no statistical background to fall back on, so the interface had to carry the rigour for them: legible, self-explanatory, and trustworthy enough to cite.',
+    ],
+    approach: [
+      'We designed, built and deployed the tool as an interactive R/Shiny application, developed iteratively with the researchers themselves: prototype, demo, feedback, refine, and round again. That co-design loop meant the people who would live with the tool shaped it at every step, rather than receiving something built to a spec they had signed off months earlier and no longer recognised.',
+      'At the front of the tool we built a processing pipeline with upload validation. Users uploaded their own datasets, which the tool checked and flagged for errors before cleaning and structuring them, handling the missing values, observer effects and irregular, repeated-measures sampling the raw data carried. Bad data was caught and surfaced, not silently absorbed.',
+      'For the analysis itself we estimated distributions over a continuous response variable and quantified the uncertainty around them, surfacing it as confidence bounds rather than unqualified point estimates. Every figure the tool produced came with an honest sense of how much to trust it.',
+      'On top of that we built a clean, high-legibility R/Shiny interface for users without a statistical background: interactive plots with uncertainty bands drawn on the chart, filterable views, and downloadable CSV tables and PDF reports, all backed by user documentation so staff could self-serve rather than queue for help.',
+      'Because the tool had to outlast the engagement, we built it to last. It was developed under Git version control with a CI/CD pipeline, so after handover it stayed dependable and maintainable rather than decaying into a fragile script: the discipline that lets a tool be cited as a reference instead of quietly abandoned.',
+    ],
+    delivered: [
+      'An interactive R/Shiny analytics tool, co-designed with the researchers and deployed on a university server for 15+ researchers and staff.',
+      'A processing pipeline with upload validation that cleaned and structured user-supplied datasets, handling missing values, observer effects and irregular, repeated-measures sampling.',
+      'Estimation of distributions over a continuous response variable, with uncertainty surfaced as on-chart confidence bounds rather than bare point estimates.',
+      'A high-legibility interface for non-technical users: interactive plots, filterable views, downloadable CSV tables and PDF reports, and supporting user documentation.',
+      'Git version control and a CI/CD pipeline, leaving a dependable, maintainable tool fit to cite as a reference.',
+    ],
+    outcome: [
+      'Behavioural and observational data that once needed an R programmer to touch is now explored directly by 15+ researchers and non-technical staff, on a tool deployed and running on the university’s own server.',
+      'Researchers get distribution estimates with their uncertainty shown honestly, in plots and reports they can read, filter and download without help.',
+      'Because it was built under version control with CI/CD and proper documentation, the tool stayed dependable after handover: a citable, maintained reference rather than a one-off script.',
+    ],
+    quote: {
+      text: 'They built something our researchers actually use, and that we can stand behind in print. It turned a pile of data into answers the whole team can get at themselves.',
+      attribution: 'Professor of Psychology, School of Psychology, Keele University',
+    },
+    order: 3,
+  },
 ]
 
 export const caseStudiesDb: CaseStudy[] = [
@@ -274,6 +314,46 @@ export const caseStudiesDb: CaseStudy[] = [
       attribution: 'Head of Trading Technology',
     },
     order: 2,
+  },
+  {
+    slug: 'behavioural-research-analytics-tool',
+    sector: 'Academic research / Data & analytics',
+    title: 'An R/Shiny analytics tool that put behavioural research data in non-technical hands',
+    excerpt:
+      'The School of Psychology at Keele University had large volumes of behavioural and observational data and no way for non-technical staff to interrogate it. We designed, built and deployed an interactive R/Shiny tool, co-designed with the researchers and now used by 15+ staff.',
+    client: 'The School of Psychology, Keele University',
+    duration: '6 months',
+    teamSize: '2: one data scientist, one delivery lead',
+    technologies: ['R', 'R / Shiny', 'Tidyverse', 'Git', 'CI/CD'],
+    challenge: [
+      'In a research-led engagement, the School of Psychology at Keele University had more behavioural and observational research data than it could make use of. The data was there, but interrogating it meant going through someone who could write R, and the people who needed the answers (researchers and non-technical staff alike) could not. The brief was to put that capability directly in their hands.',
+      'The data itself was awkward in all the ways real research data is. It arrived as datasets the researchers uploaded themselves, carrying the usual problems: missing values, observer effects, and irregular, repeated-measures sampling that does not sit neatly in a table. Anything we built had to validate what came in and flag it before it reached an analysis, because a tool that quietly computes on bad data is worse than no tool at all.',
+      'It also had to be honest about uncertainty. Estimating a distribution over a continuous response variable and reporting a single number, with no sense of how confident that number was, would have been worse than useless to researchers who knew better. The audience had no statistical background to fall back on, so the interface had to carry the rigour for them: legible, self-explanatory, and trustworthy enough to cite.',
+    ],
+    approach: [
+      'We designed, built and deployed the tool as an interactive R/Shiny application, developed iteratively with the researchers themselves: prototype, demo, feedback, refine, and round again. That co-design loop meant the people who would live with the tool shaped it at every step, rather than receiving something built to a spec they had signed off months earlier and no longer recognised.',
+      'At the front of the tool we built a processing pipeline with upload validation. Users uploaded their own datasets, which the tool checked and flagged for errors before cleaning and structuring them, handling the missing values, observer effects and irregular, repeated-measures sampling the raw data carried. Bad data was caught and surfaced, not silently absorbed.',
+      'For the analysis itself we estimated distributions over a continuous response variable and quantified the uncertainty around them, surfacing it as confidence bounds rather than unqualified point estimates. Every figure the tool produced came with an honest sense of how much to trust it.',
+      'On top of that we built a clean, high-legibility R/Shiny interface for users without a statistical background: interactive plots with uncertainty bands drawn on the chart, filterable views, and downloadable CSV tables and PDF reports, all backed by user documentation so staff could self-serve rather than queue for help.',
+      'Because the tool had to outlast the engagement, we built it to last. It was developed under Git version control with a CI/CD pipeline, so after handover it stayed dependable and maintainable rather than decaying into a fragile script: the discipline that lets a tool be cited as a reference instead of quietly abandoned.',
+    ],
+    delivered: [
+      'An interactive R/Shiny analytics tool, co-designed with the researchers and deployed on a university server for 15+ researchers and staff.',
+      'A processing pipeline with upload validation that cleaned and structured user-supplied datasets, handling missing values, observer effects and irregular, repeated-measures sampling.',
+      'Estimation of distributions over a continuous response variable, with uncertainty surfaced as on-chart confidence bounds rather than bare point estimates.',
+      'A high-legibility interface for non-technical users: interactive plots, filterable views, downloadable CSV tables and PDF reports, and supporting user documentation.',
+      'Git version control and a CI/CD pipeline, leaving a dependable, maintainable tool fit to cite as a reference.',
+    ],
+    outcome: [
+      'Behavioural and observational data that once needed an R programmer to touch is now explored directly by 15+ researchers and non-technical staff, on a tool deployed and running on the university’s own server.',
+      'Researchers get distribution estimates with their uncertainty shown honestly, in plots and reports they can read, filter and download without help.',
+      'Because it was built under version control with CI/CD and proper documentation, the tool stayed dependable after handover: a citable, maintained reference rather than a one-off script.',
+    ],
+    quote: {
+      text: 'They built something our researchers actually use, and that we can stand behind in print. It turned a pile of data into answers the whole team can get at themselves.',
+      attribution: 'Professor of Psychology, School of Psychology, Keele University',
+    },
+    order: 4,
   },
 ]
 
