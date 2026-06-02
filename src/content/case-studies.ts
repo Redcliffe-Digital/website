@@ -124,6 +124,7 @@ export const caseStudiesBefore: CaseStudy[] = [
   },
   {
     slug: 'behavioural-research-analytics-tool',
+    image: '/images/case-research-analytics.jpg',
     sector: 'Academic research / Data & analytics',
     title: 'An R/Shiny analytics tool that put behavioural research data in non-technical hands',
     excerpt:
@@ -317,6 +318,7 @@ export const caseStudiesDb: CaseStudy[] = [
   },
   {
     slug: 'behavioural-research-analytics-tool',
+    image: '/images/case-research-analytics.jpg',
     sector: 'Academic research / Data & analytics',
     title: 'An R/Shiny analytics tool that put behavioural research data in non-technical hands',
     excerpt:
