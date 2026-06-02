@@ -6,7 +6,7 @@ import { practicesBefore, practicesDb, type Practice } from '@/content/practices
 export const metadata: Metadata = {
   title: 'What we do',
   description:
-    'Four practice areas, cloud platform engineering, resilience and SRE, data and analytics engineering, and security and assurance, delivered by one senior team.',
+    'Four practice areas (cloud platform engineering, resilience and SRE, data and analytics engineering, and security and assurance), delivered by one senior team.',
   alternates: { canonical: '/what-we-do' },
 }
 

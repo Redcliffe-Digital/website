@@ -6,7 +6,7 @@ import { formattedAddress, site } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'A small, senior team of engineers, architects and SREs, most of us came up through London trading shops. Here is how we work and who we are.',
+    'A small, senior team of engineers, architects and SREs. Most of us came up through London trading shops. Here is how we work and who we are.',
   alternates: { canonical: '/about' },
 }
 
@@ -29,11 +29,11 @@ const principles: { title: string; body: string }[] = [
   },
   {
     title: 'Sustainable pace.',
-    body: 'We do not do weekend heroics. Crunch masks deeper problems, a plan that was wrong, or a system that is too fragile to change calmly, and we would rather fix those than paper over them with overtime.',
+    body: 'We do not do weekend heroics. Crunch masks deeper problems (a plan that was wrong, or a system that is too fragile to change calmly), and we would rather fix those than paper over them with overtime.',
   },
 ]
 
-// Team section hidden for now, restore this data and the "The team" section
+// Team section hidden for now — restore this data and the "The team" section
 // in the JSX below when the real team details are ready.
 // const team: { initials: string; name: string; role: string; previously: string }[] = [
 //   {
@@ -66,7 +66,7 @@ const companyFacts: { label: string; value: string; placeholder?: boolean }[] = 
   { label: 'Registered name', value: 'Redcliffe Digital Ltd, England and Wales' },
   { label: 'Company number', value: '17197703' },
   { label: 'Registered office', value: formattedAddress },
-  // Hidden for now, restore once confirmed:
+  // Hidden for now — restore once confirmed:
   // { label: 'VAT number', value: 'GB 432 8821 09', placeholder: true },
   // { label: 'ICO registration', value: 'ZB123456', placeholder: true },
 ]
@@ -100,7 +100,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* The team, hidden for now, restore when real team details are ready.
+      {/* The team — hidden for now, restore when real team details are ready.
       <section className="bg-stripe py-16 sm:py-20 lg:py-24" aria-labelledby="the-team">
         <Container>
           <h2 id="the-team" className="text-2xl sm:text-3xl">

@@ -20,7 +20,7 @@ const practicesBefore = [
   {
     icon: Cpu,
     title: 'Platform engineering',
-    body: 'Cloud-native systems on AWS and Azure, built to the GDS Service Standard and the Technology Code of Practice. We do the unglamorous parts well, observability, infrastructure as code, incident response runbooks.',
+    body: 'Cloud-native systems on AWS and Azure, built to the GDS Service Standard and the Technology Code of Practice. We do the unglamorous parts well: observability, infrastructure as code, incident response runbooks.',
   },
   {
     icon: ShieldCheck,
@@ -38,12 +38,12 @@ const practicesDb = [
   {
     icon: Database,
     title: 'Data warehouse engineering',
-    body: 'Warehouses and lakehouses on Snowflake, BigQuery, Redshift and Databricks, modelled for correctness, partitioned for scale, and governed for regulated and sensitive data. Every published figure traces back to its source row.',
+    body: 'Warehouses and lakehouses on Snowflake, BigQuery, Redshift and Databricks: modelled for correctness, partitioned for scale, and governed for regulated and sensitive data. Every published figure traces back to its source row.',
   },
   {
     icon: Cpu,
     title: 'Platform engineering',
-    body: 'Cloud-native systems on AWS and Azure, built to the GDS Service Standard and the Technology Code of Practice. We do the unglamorous parts well, observability, infrastructure as code, incident response runbooks.',
+    body: 'Cloud-native systems on AWS and Azure, built to the GDS Service Standard and the Technology Code of Practice. We do the unglamorous parts well: observability, infrastructure as code, incident response runbooks.',
   },
   {
     icon: ShieldCheck,
