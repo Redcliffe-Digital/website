@@ -16,7 +16,7 @@ export function Header() {
     >
       <Container>
         <div className="flex h-16 items-center justify-between gap-6">
-          <Link href="/" aria-label="Redcliffe Digital — home" className="shrink-0 py-2">
+          <Link href="/" aria-label="Redcliffe Digital, home" className="shrink-0 py-2">
             <Logo />
           </Link>
           <nav aria-label="Primary" className="hidden sm:block">

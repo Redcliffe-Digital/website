@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     description: study.excerpt,
     alternates: { canonical: `/case-studies/${study.slug}` },
     openGraph: {
-      title: `${study.title} — ${site.name}`,
+      title: `${study.title}, ${site.name}`,
       description: study.excerpt,
       type: 'article',
     },
@@ -130,7 +130,7 @@ function StudyBody({ study }: { study: CaseStudy }) {
             <blockquote className="font-display text-ink text-2xl leading-snug sm:text-[1.75rem]">
               {study.quote.text}
             </blockquote>
-            <figcaption className="text-muted mt-4 text-sm">— {study.quote.attribution}</figcaption>
+            <figcaption className="text-muted mt-4 text-sm">{study.quote.attribution}</figcaption>
           </figure>
 
           <Block id="outcome" title="Outcome">

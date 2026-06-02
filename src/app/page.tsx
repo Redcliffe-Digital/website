@@ -20,7 +20,7 @@ const practicesBefore = [
   {
     icon: Cpu,
     title: 'Platform engineering',
-    body: 'Cloud-native systems on AWS and Azure, built to the GDS Service Standard and the Technology Code of Practice. We do the unglamorous parts well — observability, infrastructure as code, incident response runbooks.',
+    body: 'Cloud-native systems on AWS and Azure, built to the GDS Service Standard and the Technology Code of Practice. We do the unglamorous parts well, observability, infrastructure as code, incident response runbooks.',
   },
   {
     icon: ShieldCheck,
@@ -38,12 +38,12 @@ const practicesDb = [
   {
     icon: Database,
     title: 'Data warehouse engineering',
-    body: 'Warehouses and lakehouses on Snowflake, BigQuery, Redshift and Databricks — modelled for correctness, partitioned for scale, and governed for regulated and sensitive data. Every published figure traces back to its source row.',
+    body: 'Warehouses and lakehouses on Snowflake, BigQuery, Redshift and Databricks, modelled for correctness, partitioned for scale, and governed for regulated and sensitive data. Every published figure traces back to its source row.',
   },
   {
     icon: Cpu,
     title: 'Platform engineering',
-    body: 'Cloud-native systems on AWS and Azure, built to the GDS Service Standard and the Technology Code of Practice. We do the unglamorous parts well — observability, infrastructure as code, incident response runbooks.',
+    body: 'Cloud-native systems on AWS and Azure, built to the GDS Service Standard and the Technology Code of Practice. We do the unglamorous parts well, observability, infrastructure as code, incident response runbooks.',
   },
   {
     icon: ShieldCheck,
@@ -58,7 +58,7 @@ const warehouseCapabilities = [
   {
     icon: GitMerge,
     title: 'Ingestion that does not lie',
-    body: 'Log-based change-data-capture for freshness, idempotent batch loads where nightly is right. Every load is replayable, so a bad transformation is a redeploy — not a data-loss incident.',
+    body: 'Log-based change-data-capture for freshness, idempotent batch loads where nightly is right. Every load is replayable, so a bad transformation is a redeploy, not a data-loss incident.',
   },
   {
     icon: Layers,
@@ -78,7 +78,7 @@ const warehouseCapabilities = [
   {
     icon: ShieldCheck,
     title: 'Governance by design',
-    body: 'Classification at ingestion, least-privilege auditable access, and retention and erasure enforced by the pipeline — so a deletion request provably reaches every derived table. Built for regulated and sensitive data from the first sprint.',
+    body: 'Classification at ingestion, least-privilege auditable access, and retention and erasure enforced by the pipeline, so a deletion request provably reaches every derived table. Built for regulated and sensitive data from the first sprint.',
   },
   {
     icon: Database,
@@ -187,7 +187,7 @@ export default function HomePage() {
               </h1>
               <p className="text-muted mt-7 max-w-[56ch] text-lg leading-relaxed sm:text-xl">
                 Redcliffe Digital is a small team of senior engineers building the warehouses,
-                pipelines and data systems organisations depend on — modelled for correctness and
+                pipelines and data systems organisations depend on, modelled for correctness and
                 built to scale. We learned the craft moving sub-millisecond market data, where a
                 wrong number costs millions, and we bring that discipline to everything we build.
               </p>
@@ -292,7 +292,7 @@ export default function HomePage() {
             />
             <p className="text-body mt-7 text-lg leading-relaxed">
               The Big Four can field a hundred consultants by Monday. We can&rsquo;t. What we can do
-              is put two principal engineers in a room with your team on day one — the same people
+              is put two principal engineers in a room with your team on day one, the same people
               who will still be there in month nine. There is no offshore handover, no rotating
               bench, no upward delegation. The person you meet at the kick-off is the person writing
               the code.

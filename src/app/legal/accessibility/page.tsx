@@ -76,7 +76,7 @@ export default function AccessibilityPage() {
             </p>
             <p className="mt-4">
               We are not aware of any parts of the website that fail the AA standard. If you find
-              something that does, please tell us — see the next section.
+              something that does, please tell us, see the next section.
             </p>
 
             <H2 id="report">Reporting accessibility problems</H2>

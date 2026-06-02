@@ -7,7 +7,7 @@ import { sortedCaseStudiesBefore, sortedCaseStudiesDb, type CaseStudy } from '@/
 export const metadata: Metadata = {
   title: 'Case studies',
   description:
-    'Recent work in cyber security, applied AI and quantitative trading. Some clients ask not to be named — we honour that.',
+    'Recent work in cyber security, applied AI and quantitative trading. Some clients ask not to be named, we honour that.',
   alternates: { canonical: '/case-studies' },
 }
 
@@ -26,7 +26,7 @@ export default function CaseStudiesPage() {
     <>
       <PageHeader
         title="Case studies"
-        intro="A small selection of recent work. Some clients ask us not to name them — we honour that."
+        intro="A small selection of recent work. Some clients ask us not to name them, we honour that."
       />
 
       <section className="pt-6 pb-20 sm:pb-24 lg:pb-28" aria-label="Case studies">

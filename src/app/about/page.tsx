@@ -6,7 +6,7 @@ import { formattedAddress, site } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'A small, senior team of engineers, architects and SREs — most of us came up through London trading shops. Here is how we work and who we are.',
+    'A small, senior team of engineers, architects and SREs, most of us came up through London trading shops. Here is how we work and who we are.',
   alternates: { canonical: '/about' },
 }
 
@@ -17,7 +17,7 @@ const principles: { title: string; body: string }[] = [
   },
   {
     title: 'One team with you.',
-    body: 'We embed with your team rather than working at arm’s length — sharing your tools, attending your standups, and being accountable to the same goals. We are at our best as part of your team, not adjacent to it.',
+    body: 'We embed with your team rather than working at arm’s length, sharing your tools, attending your standups, and being accountable to the same goals. We are at our best as part of your team, not adjacent to it.',
   },
   {
     title: 'In the open.',
@@ -29,11 +29,11 @@ const principles: { title: string; body: string }[] = [
   },
   {
     title: 'Sustainable pace.',
-    body: 'We do not do weekend heroics. Crunch masks deeper problems — a plan that was wrong, or a system that is too fragile to change calmly — and we would rather fix those than paper over them with overtime.',
+    body: 'We do not do weekend heroics. Crunch masks deeper problems, a plan that was wrong, or a system that is too fragile to change calmly, and we would rather fix those than paper over them with overtime.',
   },
 ]
 
-// Team section hidden for now — restore this data and the "The team" section
+// Team section hidden for now, restore this data and the "The team" section
 // in the JSX below when the real team details are ready.
 // const team: { initials: string; name: string; role: string; previously: string }[] = [
 //   {
@@ -66,7 +66,7 @@ const companyFacts: { label: string; value: string; placeholder?: boolean }[] = 
   { label: 'Registered name', value: 'Redcliffe Digital Ltd, England and Wales' },
   { label: 'Company number', value: '17197703' },
   { label: 'Registered office', value: formattedAddress },
-  // Hidden for now — restore once confirmed:
+  // Hidden for now, restore once confirmed:
   // { label: 'VAT number', value: 'GB 432 8821 09', placeholder: true },
   // { label: 'ICO registration', value: 'ZB123456', placeholder: true },
 ]
@@ -76,7 +76,7 @@ export default function AboutPage() {
     <>
       <PageHeader
         title="About Redcliffe Digital"
-        intro="We’re a small, senior team of engineers, architects and SREs based in the UK. Most of us came up through London trading shops — a few from the high-pressure proprietary firms in Mayfair and the City, others from the platform teams at the big investment banks. We started Redcliffe Digital because we kept meeting public sector technologists who were trying to solve the same problems we’d already solved, and being sold an army of juniors when what they needed was two people who’d done it before."
+        intro="We’re a small, senior team of engineers, architects and SREs based in the UK. Most of us came up through London trading shops, a few from the high-pressure proprietary firms in Mayfair and the City, others from the platform teams at the big investment banks. We started Redcliffe Digital because we kept meeting public sector technologists who were trying to solve the same problems we’d already solved, and being sold an army of juniors when what they needed was two people who’d done it before."
       />
 
       {/* How we work */}
@@ -100,7 +100,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* The team — hidden for now, restore when real team details are ready.
+      {/* The team, hidden for now, restore when real team details are ready.
       <section className="bg-stripe py-16 sm:py-20 lg:py-24" aria-labelledby="the-team">
         <Container>
           <h2 id="the-team" className="text-2xl sm:text-3xl">

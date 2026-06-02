@@ -20,7 +20,7 @@ export function ContactForm() {
   if (state.succeeded) {
     return (
       <div className="border-hairline bg-stripe max-w-xl border p-8" role="status">
-        <p className="text-ink text-lg font-medium">Thanks — your message is on its way.</p>
+        <p className="text-ink text-lg font-medium">Thanks, your message is on its way.</p>
         <p className="text-body mt-2 leading-relaxed">
           We’ll come back to you within one working day. If it’s urgent, email us directly at{' '}
           <a href={`mailto:${site.email}`} className="link-accent">
