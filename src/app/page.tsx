@@ -6,7 +6,7 @@ import { Section } from '@/components/Section'
 import { SectionHeading } from '@/components/SectionHeading'
 import { Button } from '@/components/Button'
 import { Badges } from '@/components/Badges'
-import { NetworkMotif } from '@/components/NetworkMotif'
+import { ForceGraph } from '@/components/ForceGraph'
 import { CaseStudyCard } from '@/components/CaseStudyCard'
 import { sortedCaseStudiesBefore, sortedCaseStudiesDb } from '@/content/case-studies'
 import { site } from '@/lib/site'
@@ -149,7 +149,7 @@ export default function HomePage() {
       {/* Hero — default variant */}
       <section className="flex min-h-[60vh] items-center py-20 sm:py-24" data-v="before">
         <Container>
-          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,420px)] lg:gap-16">
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,450px)] lg:gap-16">
             <div className="fade-up max-w-3xl">
               <p className="eyebrow">UK-based technology consultancy</p>
               <h1 className="mt-5 text-4xl leading-[1.1] sm:text-5xl lg:text-[4rem]">
@@ -170,7 +170,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="fade-up hidden lg:block" aria-hidden="true">
-              <NetworkMotif className="h-auto w-full" />
+              <ForceGraph className="w-full" />
             </div>
           </div>
         </Container>
@@ -179,7 +179,7 @@ export default function HomePage() {
       {/* Hero — data-warehouse variant */}
       <section className="flex min-h-[60vh] items-center py-20 sm:py-24" data-v="db">
         <Container>
-          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,400px)] lg:gap-16">
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,450px)] lg:gap-16">
             <div className="fade-up max-w-3xl">
               <p className="eyebrow">Data platform &amp; warehouse engineering</p>
               <h1 className="mt-5 text-4xl leading-[1.1] sm:text-5xl lg:text-[4rem]">
@@ -201,7 +201,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="fade-up hidden lg:block" aria-hidden="true">
-              <NetworkMotif className="h-auto w-full" />
+              <ForceGraph className="w-full" />
             </div>
           </div>
         </Container>
