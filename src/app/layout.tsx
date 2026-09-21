@@ -63,6 +63,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en-GB"
       className={`${fraunces.variable} ${inter.variable}`}
+      // Next 16 no longer overrides scroll-behavior on navigation; this opts
+      // back in, so route changes stay instant while in-page anchors glide.
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       {/*
