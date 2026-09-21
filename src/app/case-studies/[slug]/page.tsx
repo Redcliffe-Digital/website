@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { Container } from '@/components/Container'
-import { Button } from '@/components/Button'
+import { CtaBand } from '@/components/CtaBand'
+import { PageHero } from '@/components/PageHero'
+import { Reveal } from '@/components/ui/Reveal'
 import { allCaseStudySlugs, getCaseStudy, type CaseStudy } from '@/content/case-studies'
-import { ImagePlaceholder } from '@/components/ImagePlaceholder'
 import { site } from '@/lib/site'
 
 interface Params {
@@ -34,155 +34,156 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 function GlanceRow({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="border-hairline border-t py-3 first:border-t-0 first:pt-0">
-      <dt className="eyebrow">{label}</dt>
-      <dd className="text-body mt-1 text-sm leading-relaxed">{children}</dd>
+    <div className="border-line border-t py-3 first:border-t-0 first:pt-0">
+      <dt className="text-label-sm text-fg-muted font-mono tracking-[0.08em] uppercase">{label}</dt>
+      <dd className="text-body-sm mt-1.5">{children}</dd>
     </div>
   )
 }
 
 function Block({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
-    <section aria-labelledby={id} className="mt-12 first:mt-0">
-      <h2 id={id} className="text-2xl sm:text-[1.75rem]">
+    <section aria-labelledby={id} className="mt-14 first:mt-0">
+      <h2
+        id={id}
+        className="text-h2-sm md:text-h2 max-w-[20ch] font-bold tracking-[-0.03em] text-balance"
+      >
         {title}
       </h2>
-      <div className="text-body mt-4 space-y-4 leading-relaxed">{children}</div>
+      <div className="text-body-sm md:text-body mt-5 max-w-[68ch] space-y-5">{children}</div>
     </section>
-  )
-}
-
-function StudyBody({ study }: { study: CaseStudy }) {
-  return (
-    <>
-      <div className="fade-up mt-8 max-w-3xl">
-        <p className="eyebrow">
-          {study.sector} · {study.duration}
-        </p>
-        <h1 className="mt-4 text-3xl leading-[1.12] sm:text-4xl lg:text-[3rem]">{study.title}</h1>
-        <p className="text-muted mt-5 text-lg leading-relaxed">{study.client}</p>
-      </div>
-
-      {study.image ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={study.image}
-          alt=""
-          width={1600}
-          height={686}
-          className="border-hairline no-print mt-10 aspect-[21/9] w-full rounded-sm border object-cover"
-          loading="lazy"
-          decoding="async"
-        />
-      ) : (
-        <ImagePlaceholder ratio="aspect-[21/9]" label="Case study image" className="no-print mt-10" />
-      )}
-
-      <div className="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-16">
-        {/* Sidebar */}
-        <aside className="lg:order-2 lg:col-span-4">
-          <div className="at-a-glance border-hairline bg-card border p-7 lg:sticky lg:top-24">
-            <h2 className="font-display text-ink text-lg font-medium">At a glance</h2>
-            <dl className="mt-5">
-              <GlanceRow label="Sector">{study.sector}</GlanceRow>
-              <GlanceRow label="Duration">{study.duration}</GlanceRow>
-              <GlanceRow label="Team">{study.teamSize}</GlanceRow>
-              <GlanceRow label="Technologies">
-                <ul className="mt-1 flex flex-wrap gap-2">
-                  {study.technologies.map((tech) => (
-                    <li key={tech} className="border-hairline text-muted border px-2 py-0.5 text-xs">
-                      {tech}
-                    </li>
-                  ))}
-                </ul>
-              </GlanceRow>
-            </dl>
-          </div>
-        </aside>
-
-        {/* Body */}
-        <div className="lg:order-1 lg:col-span-8">
-          <Block id="challenge" title="The challenge">
-            {study.challenge.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
-          </Block>
-
-          <Block id="approach" title="Our approach">
-            {study.approach.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
-          </Block>
-
-          <Block id="delivered" title="What we delivered">
-            <ul className="space-y-3">
-              {study.delivered.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span aria-hidden="true" className="bg-oxblood mt-2 h-1.5 w-1.5 shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </Block>
-
-          {/* Pull quote */}
-          <figure className="border-oxblood my-12 border-l-2 pl-6 sm:pl-8">
-            <blockquote className="font-display text-ink text-2xl leading-snug sm:text-[1.75rem]">
-              {study.quote.text}
-            </blockquote>
-            <figcaption className="text-muted mt-4 text-sm">{study.quote.attribution}</figcaption>
-          </figure>
-
-          <Block id="outcome" title="Outcome">
-            {study.outcome.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
-          </Block>
-        </div>
-      </div>
-    </>
   )
 }
 
 export default async function CaseStudyPage({ params }: Params) {
   const { slug } = await params
-  const before = getCaseStudy(slug, 'before')
-  const db = getCaseStudy(slug, 'db')
-  if (!before && !db) notFound()
+  const study: CaseStudy | undefined = getCaseStudy(slug, 'before') ?? getCaseStudy(slug, 'db')
+  if (!study) notFound()
 
   return (
-    <article className="pt-12 pb-20 sm:pt-16 lg:pb-28">
-      <Container>
+    <article>
+      <PageHero>
         <Link
           href="/case-studies"
-          className="no-print text-muted hover:text-oxblood inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
+          className="no-print text-label-sm text-fg-muted hover:text-accent inline-flex min-h-11 items-center gap-2 font-mono tracking-[0.08em] uppercase transition-colors duration-200"
         >
-          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+          <span aria-hidden="true">&larr;</span>
           All case studies
         </Link>
+        <p className="text-label-sm sm:text-label text-fg-muted mt-4 font-mono tracking-[0.08em] uppercase">
+          <span className="text-accent">{study.sector}</span>
+          <span aria-hidden="true" className="text-line-strong mx-3">
+            /
+          </span>
+          {study.duration}
+        </p>
+        <h1 className="text-h1-sm md:text-h1 mt-6 max-w-[22ch] font-bold tracking-[-0.03em] text-balance">
+          {study.title}
+        </h1>
+        <p className="text-body-sm md:text-body text-fg-muted border-accent-deep mt-6 max-w-[62ch] border-l pl-5 md:pl-6">
+          {study.client}
+        </p>
+      </PageHero>
 
-        {before ? (
-          <div data-v="before">
-            <StudyBody study={before} />
-          </div>
-        ) : null}
-        {db ? (
-          <div data-v="db">
-            <StudyBody study={db} />
-          </div>
-        ) : null}
+      <section className="border-line border-b py-16 md:py-24">
+        <Container>
+          {study.image ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={study.image}
+              alt=""
+              width={1600}
+              height={686}
+              className="rounded-brand border-line no-print mb-14 aspect-[21/9] w-full border object-cover md:mb-20"
+              loading="lazy"
+              decoding="async"
+            />
+          ) : null}
 
-        {/* Closing CTA */}
-        <div className="no-print border-hairline mt-16 border-t pt-10">
-          <p className="text-ink text-lg">Working on something similar?</p>
-          <div className="mt-5">
-            <Button href="/contact" variant="secondary">
-              Discuss a programme
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Button>
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
+            <aside className="lg:order-2 lg:col-span-4">
+              <div className="at-a-glance rounded-brand border-line bg-surface border p-6 lg:sticky lg:top-24">
+                <h2 className="text-label text-accent font-mono tracking-[0.08em] uppercase">
+                  At a glance
+                </h2>
+                <dl className="mt-5">
+                  <GlanceRow label="Sector">{study.sector}</GlanceRow>
+                  <GlanceRow label="Duration">{study.duration}</GlanceRow>
+                  <GlanceRow label="Team">{study.teamSize}</GlanceRow>
+                  <GlanceRow label="Technologies">
+                    <ul className="mt-2 flex flex-wrap gap-2">
+                      {study.technologies.map((tech) => (
+                        <li
+                          key={tech}
+                          className="rounded-brand border-line text-label-sm text-fg-muted border px-2 py-1 font-mono"
+                        >
+                          {tech}
+                        </li>
+                      ))}
+                    </ul>
+                  </GlanceRow>
+                </dl>
+              </div>
+            </aside>
+
+            <div className="lg:order-1 lg:col-span-7">
+              <Reveal>
+                <Block id="challenge" title="The challenge">
+                  {study.challenge.map((paragraph) => (
+                    <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+                  ))}
+                </Block>
+              </Reveal>
+
+              <Reveal>
+                <Block id="approach" title="Our approach">
+                  {study.approach.map((paragraph) => (
+                    <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+                  ))}
+                </Block>
+              </Reveal>
+
+              <Reveal>
+                <Block id="delivered" title="What we delivered">
+                  <ul className="space-y-3">
+                    {study.delivered.map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <span aria-hidden="true" className="bg-accent mt-2.5 h-1 w-1 shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </Block>
+              </Reveal>
+
+              <Reveal>
+                <figure className="border-accent-deep my-14 border-l-2 pl-6 md:pl-8">
+                  <blockquote className="text-h3 md:text-h2-sm font-semibold tracking-[-0.02em] text-balance">
+                    {study.quote.text}
+                  </blockquote>
+                  <figcaption className="text-label text-fg-muted mt-4 font-mono tracking-[0.08em] uppercase">
+                    {study.quote.attribution}
+                  </figcaption>
+                </figure>
+              </Reveal>
+
+              <Reveal>
+                <Block id="outcome" title="Outcome">
+                  {study.outcome.map((paragraph) => (
+                    <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+                  ))}
+                </Block>
+              </Reveal>
+            </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </section>
+
+      <CtaBand
+        headline="Working on something similar?"
+        text="Tell us what you’re trying to deliver. We’ll tell you honestly whether we can help."
+        email={site.email}
+      />
     </article>
   )
 }
