@@ -1,67 +1,118 @@
 @import 'tailwindcss';
 
-/* ------------------------------------------------------------------ */
-/* Design tokens                                                       */
-/* The palette and type scale are deliberately restrained: muted,      */
-/* confident, government-friendly. See CONTENT.md / the brand notes.   */
-/* ------------------------------------------------------------------ */
+/*
+  Design tokens. Palette, type scale, radius and motion are defined here once.
+  Components reference the generated utilities (bg-bg, text-fg, border-line,
+  rounded-brand, ease-out-soft) and never raw hex or arbitrary ms values.
+*/
 @theme {
-  --color-oxblood: #8b1e2d;
-  --color-oxblood-dark: #74111f;
-  --color-ink: #0f1419;
-  --color-body: #2a2f36;
-  --color-muted: #5c6470;
-  --color-surface: #fafaf7;
-  --color-card: #ffffff;
-  --color-hairline: #e8e5de;
-  --color-stripe: #f4f2ec;
+  /* 60% base surface */
+  --color-bg: #12161c;
+  --color-surface: #171c24;
+  --color-surface-high: #1c222b;
+  --color-line: #252c36;
+  --color-line-strong: #333c48;
 
-  /* next/font sets --font-fraunces and --font-inter on <html>. */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-display: var(--font-fraunces), Georgia, 'Times New Roman', serif;
+  /* 30% text */
+  --color-fg: #e8e4dc;
+  --color-fg-muted: #9aa3ae;
 
-  /* Width of the central content column. */
+  /* Boundary of an empty form control. WCAG 2.2 AA 1.4.11 wants 3:1 against
+     what is behind it, and --color-line (1.29:1 on --color-bg) is a hairline
+     for decorative rules, not for the one edge that makes an empty input
+     visible at all. 3.93:1 on --color-bg. */
+  --color-control: #6b7683;
+
+  /* 10% accent: one hue, two stops.
+     --color-accent     : 6.1:1 on bg, safe as text and as button fill with bg text
+     --color-accent-deep: 3.8:1 on bg, borders and hover fills only, never text */
+  --color-accent: #e8734f;
+  --color-accent-deep: #c8452b;
+
+  /* ----------------------------------------------------------------
+     Compatibility aliases.
+     The legal pages and the content modules were written against the
+     previous light palette and still use these names. Pointing them at
+     the tokens above means those pages inherit the new look without a
+     single edit to their copy. New markup should use the tokens above.
+     ---------------------------------------------------------------- */
+  --color-ink: var(--color-fg);
+  --color-body: var(--color-fg);
+  --color-muted: var(--color-fg-muted);
+  --color-oxblood: var(--color-accent);
+  --color-oxblood-dark: var(--color-accent-deep);
+  --color-card: var(--color-surface);
+  --color-hairline: var(--color-line);
+  --color-stripe: var(--color-surface-high);
+
+  /* Type scale (mobile / desktop pairs) */
+  --text-label-sm: 0.75rem;
+  --text-label-sm--line-height: 1.4;
+  --text-label: 0.8125rem;
+  --text-label--line-height: 1.4;
+  --text-body-sm: 1rem;
+  --text-body-sm--line-height: 1.6;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.6;
+  --text-h3-sm: 1.1875rem;
+  --text-h3-sm--line-height: 1.3;
+  --text-h3: 1.375rem;
+  --text-h3--line-height: 1.3;
+  --text-h2-sm: 1.625rem;
+  --text-h2-sm--line-height: 1.15;
+  --text-h2: 2.25rem;
+  --text-h2--line-height: 1.15;
+  --text-h1-sm: 2.25rem;
+  --text-h1-sm--line-height: 1.08;
+  --text-h1: 3.25rem;
+  --text-h1--line-height: 1.05;
+
+  /* Fonts */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, 'SF Mono', monospace;
+  /* Kept for markup that still asks for the display face. */
+  --font-display: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+
+  /* Shape: one radius for everything */
+  --radius-brand: 4px;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring-subtle: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Width of the central content column, kept from the previous build. */
   --spacing-content: 1200px;
 }
 
-/* ------------------------------------------------------------------ */
-/* Base                                                                */
-/* ------------------------------------------------------------------ */
+:root {
+  --duration-instant: 100ms;
+  --duration-fast: 200ms;
+  --duration-base: 350ms;
+  --duration-slow: 600ms;
+}
+
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
+    scroll-padding-top: 5rem;
   }
 
   body {
-    background-color: var(--color-surface);
-    color: var(--color-body);
+    background: var(--color-bg);
+    color: var(--color-fg);
     font-family: var(--font-sans);
+    font-size: var(--text-body-sm);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    color: var(--color-ink);
-    line-height: 1.15;
-    letter-spacing: -0.015em;
-    font-optical-sizing: auto;
-    font-variation-settings: 'opsz' 24;
-    text-wrap: balance;
+  @media (min-width: 768px) {
+    body {
+      font-size: var(--text-body);
+    }
   }
 
   p {
@@ -69,14 +120,14 @@
   }
 
   /* Visible, consistent focus treatment everywhere. WCAG 2.2 AA. */
-  :focus-visible {
-    outline: 2px solid var(--color-oxblood);
+  *:focus-visible {
+    outline: 2px solid var(--color-accent);
     outline-offset: 2px;
-    border-radius: 1px;
   }
 
   ::selection {
-    background-color: color-mix(in srgb, var(--color-oxblood) 18%, transparent);
+    background: var(--color-accent);
+    color: var(--color-bg);
   }
 
   a {
@@ -85,23 +136,20 @@
   }
 }
 
-/* ------------------------------------------------------------------ */
-/* Reusable patterns                                                   */
-/* ------------------------------------------------------------------ */
 @layer components {
   /* Small uppercase label used above section headings. */
   .eyebrow {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-label-sm);
     font-weight: 500;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-muted);
+    color: var(--color-fg-muted);
   }
 
-  /* Inline text link that picks up the oxblood accent. */
+  /* Inline text link that picks up the accent. */
   .link-accent {
-    color: var(--color-oxblood);
+    color: var(--color-accent);
     font-weight: 500;
     text-underline-offset: 3px;
     transition: text-decoration-color 0.15s ease;
@@ -113,14 +161,38 @@
   }
 }
 
-/* ------------------------------------------------------------------ */
-/* Motion: a single, subtle fade-up on first paint of section headings */
-/* ------------------------------------------------------------------ */
+/* Hairline grid used as a depth cue behind hero and section bands. */
+.grid-rule {
+  background-image:
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 96px 96px;
+}
+
+.grid-rule-fade {
+  mask-image: radial-gradient(ellipse 100% 70% at 50% 0%, black 20%, transparent 75%);
+}
+
+/* Idle affordance on a single primary CTA (at most one per page). */
+@keyframes nudge-x {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+}
+
+.cta-idle-arrow {
+  animation: nudge-x 3.2s var(--ease-in-out-smooth) infinite;
+}
+
 /*
- * A gentle rise on first paint. We deliberately animate transform only, not
- * opacity: fading text in from opacity 0 makes automated checkers (axe-core)
- * sample it mid-fade and report a colour-contrast failure, even though the
- * resting state is fine. Transform-only keeps the motion subtle and AA-clean.
+ * A gentle rise on first paint, kept from the previous build for the pages
+ * that still use it. Transform only, never opacity: fading text in from
+ * opacity 0 makes axe-core sample it mid-fade and report a contrast failure
+ * even though the resting state is fine.
  */
 @keyframes fade-up {
   from {
@@ -136,6 +208,19 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
   .fade-up {
     animation: none;
   }
@@ -145,10 +230,6 @@
 /* Print: case studies should print cleanly for procurement packs.     */
 /* ------------------------------------------------------------------ */
 @media print {
-  :root {
-    --color-surface: #ffffff;
-  }
-
   body {
     background: #fff;
     color: #000;
@@ -190,17 +271,4 @@
   .at-a-glance {
     page-break-inside: avoid;
   }
-}
-
-/* ------------------------------------------------------------------ */
-/* Site A/B variant toggle (?v=db)                                     */
-/* Default shows [data-v="before"] blocks; html.v-db swaps to          */
-/* [data-v="db"]. The class is set pre-paint by the script in          */
-/* layout.tsx, so there is no flash of the wrong variant.              */
-/* ------------------------------------------------------------------ */
-:root:not(.v-db) [data-v='db'] {
-  display: none !important;
-}
-:root.v-db [data-v='before'] {
-  display: none !important;
 }
