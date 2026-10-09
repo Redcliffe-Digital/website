@@ -114,28 +114,6 @@ export function Footer() {
             <p>
               &copy; {year} {site.legalName}. Registered in England and Wales, {site.companyNumber}.
             </p>
-            <p className="mt-2">
-              <a
-                href="https://github.com/Redcliffe-Digital/website"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-fg underline underline-offset-4 transition-colors duration-200"
-              >
-                Built in the open · View source
-              </a>
-              <span aria-hidden="true" className="mx-2">
-                ·
-              </span>
-              Built by{' '}
-              <a
-                href="https://onovo.at"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-fg hover:text-accent underline underline-offset-4 transition-colors duration-200"
-              >
-                onovo.at
-              </a>
-            </p>
           </div>
         </div>
       </Container>
