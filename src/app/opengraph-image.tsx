@@ -7,8 +7,9 @@ export const contentType = 'image/png'
 // Required so the image is generated once at build time under `output: 'export'`.
 export const dynamic = 'force-static'
 
-// Generated at build time. Uses the default system font rather than Fraunces to
-// keep the build offline-safe; see NEXT_STEPS.md to embed the brand face later.
+// Generated at build time. Uses the default system font rather than the brand
+// face to keep the build offline-safe; see NEXT_STEPS.md to embed it later.
+// Colours mirror the tokens in globals.css.
 export default function OpenGraphImage() {
   return new ImageResponse(
     <div
@@ -18,15 +19,15 @@ export default function OpenGraphImage() {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        backgroundColor: '#FAFAF7',
+        backgroundColor: '#12161C',
         padding: '80px',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        <div style={{ width: 28, height: 28, backgroundColor: '#8B1E2D' }} />
-        <div style={{ display: 'flex', marginLeft: 18, fontSize: 30, color: '#0F1419' }}>
+        <div style={{ width: 28, height: 28, backgroundColor: '#E8734F' }} />
+        <div style={{ display: 'flex', marginLeft: 18, fontSize: 30, color: '#E8E4DC' }}>
           <span style={{ fontWeight: 600 }}>Redcliffe</span>
-          <span style={{ marginLeft: 10, color: '#5C6470' }}>Digital</span>
+          <span style={{ marginLeft: 10, color: '#9AA3AE' }}>Digital</span>
         </div>
       </div>
 
@@ -36,7 +37,7 @@ export default function OpenGraphImage() {
           fontSize: 64,
           lineHeight: 1.12,
           fontWeight: 600,
-          color: '#0F1419',
+          color: '#E8E4DC',
           maxWidth: 940,
           letterSpacing: '-0.02em',
         }}
@@ -52,8 +53,8 @@ export default function OpenGraphImage() {
           fontSize: 22,
           letterSpacing: '0.12em',
           textTransform: 'uppercase',
-          color: '#5C6470',
-          borderTop: '1px solid #E8E5DE',
+          color: '#9AA3AE',
+          borderTop: '1px solid #252C36',
           paddingTop: 28,
         }}
       >

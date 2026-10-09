@@ -71,8 +71,10 @@ export default function AccessibilityPage() {
                 Web Content Accessibility Guidelines version 2.2
               </a>{' '}
               AA standard. The site is a static, content-only website with no carousels, no
-              auto-playing media and no cookie banners. Motion is limited to a single subtle fade on
-              first paint, which is disabled for anyone who has asked their device to reduce motion.
+              auto-playing media and no cookie banners. Motion is limited to an animated line
+              graphic behind the page headings and a short fade as sections come into view. Both
+              stop for anyone who has asked their device to reduce motion, and neither conveys any
+              information that is not also in the text.
             </p>
             <p className="mt-4">
               We are not aware of any parts of the website that fail the AA standard. If you find

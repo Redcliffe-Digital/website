@@ -5,12 +5,13 @@ statically-exported Next.js site designed to be calm, credible and government-fr
 
 ## Stack
 
-- **Next.js 15** (App Router) + **TypeScript** (strict)
+- **Next.js 16** (App Router, Turbopack) + **TypeScript** (strict)
 - **Tailwind CSS v4** (design tokens in `src/app/globals.css`)
-- **lucide-react** for icons
-- **next/font** — Fraunces (display) and Inter (body/UI)
+- **lucide-react** for icons, **framer-motion** for the section reveals
+- **next/font** — Geist (body/UI) and Geist Mono (labels, navigation, eyebrows)
 - Output is a fully static site (`output: 'export'`) — no server runtime needed
-- No client-side JavaScript for content: every page is a server component
+- Content is rendered on the server; the only client components are the header
+  menu, the contact form and the two canvas/SVG graphics
 
 ## Prerequisites
 
@@ -64,8 +65,9 @@ src/
     legal/             Privacy, Cookies, Modern Slavery (stubs), Accessibility (real)
     opengraph-image.tsx  Build-time OG image
     robots.ts  sitemap.ts
-  components/          Header, Footer, Badges, Logo, Button, Section, etc.
-  content/             Editable copy: case-studies.ts, practices.ts
+  components/          Header, Footer, Hero, PracticeSection, etc.
+    ui/                Container, CtaLink, Icon, Reveal, SectionHeading, SonicWaveform
+  content/             Editable copy: case-studies.ts, practices.ts, accreditations.ts
   lib/                 site.ts — site-wide constants and nav
 public/
   .well-known/security.txt

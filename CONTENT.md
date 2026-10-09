@@ -37,15 +37,14 @@ new detail page is generated automatically at `/case-studies/<slug>/`.
 
 ## Credentials / trust badges
 
-**`src/components/Badges.tsx`** holds the six accreditations shown: AWS
-Certified Solutions Architect – Professional, Microsoft Certified: Azure
-Solutions Architect Expert, Cyber Essentials, ISO 27001, Crown Commercial
-Service — G-Cloud 14 Supplier, and Disability Confident. The trust strip shows
-all six; the footer shows the first five (excludes Disability Confident). The
-emblems are monochrome placeholders — see the `TODO` at the top of the file for
-how to swap in each official issued artwork (Credly / IASME / UKAS body / CCS /
-DWP) with verification links. The certifications are also listed as
-`hasCredential` in the home-page JSON-LD (`src/app/page.tsx`).
+**`src/content/accreditations.ts`** holds the five accreditations shown: AWS
+Certified Developer – Associate, Microsoft Certified: Azure Fundamentals, Cyber
+Essentials, ISO/IEC 27001 and Disability Confident Committed. The strip under
+the hero shows all five; the footer shows the first four. The emblems are
+representations, not the issued artwork — see the note at the top of the file
+for how to swap in each official badge (Credly / IASME / UKAS body / DWP) with
+verification links. The certifications are also listed as `hasCredential` in the
+home-page JSON-LD (`src/app/page.tsx`).
 
 ## Header / footer chrome
 

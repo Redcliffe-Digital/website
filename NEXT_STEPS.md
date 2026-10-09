@@ -31,7 +31,7 @@ comment. Search the repo for `TODO` and `placeholder` to find them all.
 
 ### Credentials / official badge artwork
 
-- [ ] Swap the placeholder emblems in `src/components/Badges.tsx` for the **official
+- [ ] Swap the placeholder emblems in `src/content/accreditations.ts` for the **official
       issued artwork**, each linked to its verification page:
   - AWS Certified Solutions Architect – Professional → Credly badge image + verify URL.
   - Microsoft Certified: Azure Solutions Architect Expert → Credly / Microsoft Learn badge + verify URL.
@@ -43,7 +43,7 @@ comment. Search the repo for `TODO` and `placeholder` to find them all.
       or use the awarding bodies' **full-colour** badges. Full-colour will break the
       "single calm row" look — if you go that way, give the trust strip more breathing room.
 - [ ] Confirm the **Disability Confident level** — the badge is currently labelled
-      "Committed" (level 1). Update the label in `src/components/Badges.tsx` if you are
+      "Committed" (level 1). Update the label in `src/content/accreditations.ts` if you are
       Employer or Leader.
 
 ### Wiring and integrations

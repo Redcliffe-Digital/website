@@ -1,39 +1,37 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 import type { CaseStudy } from '@/content/case-studies'
 
-/**
- * Card linking to a case study detail page. Hairline border, no shadow,
- * 32px padding. The whole card is the link; the oxblood affordance signals it.
- *
- * `titleAs` sets the card title's heading level so the document outline stays
- * valid: h3 on the home page (under the "Selected work" h2), h2 on the
- * case-studies index (directly under the page h1).
- */
 export function CaseStudyCard({
   study,
-  titleAs: Title = 'h3',
+  /** Heading level, so the card fits whatever section it is dropped into. */
+  as: Title = 'h3',
 }: {
   study: CaseStudy
-  titleAs?: 'h2' | 'h3'
+  as?: 'h2' | 'h3'
 }) {
   return (
-    <Link
-      href={`/case-studies/${study.slug}`}
-      className="group border-hairline bg-card hover:border-ink/30 flex h-full flex-col border p-8 transition-colors"
-    >
-      <p className="eyebrow">{study.sector}</p>
-      <Title className="font-display text-ink mt-4 text-xl leading-snug font-medium">
-        {study.title}
-      </Title>
-      <p className="text-muted mt-3 flex-1 text-[0.95rem] leading-relaxed">{study.excerpt}</p>
-      <span className="text-oxblood mt-6 inline-flex items-center gap-1.5 text-sm font-medium">
-        Read case study
-        <ArrowRight
-          className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
-          aria-hidden="true"
-        />
-      </span>
-    </Link>
+    <article className="group h-full">
+      <Link
+        href={`/case-studies/${study.slug}`}
+        className="rounded-brand border-line bg-surface hover:border-accent-deep flex h-full flex-col border p-6 transition-[border-color,transform] duration-200 ease-[var(--ease-out-soft)] hover:-translate-y-1 md:p-8"
+      >
+        <p className="text-label-sm text-fg-muted font-mono tracking-[0.08em] uppercase">
+          {study.sector}
+        </p>
+        <Title className="text-h3-sm md:text-h3 mt-4 font-semibold tracking-[-0.02em] text-balance">
+          {study.title}
+        </Title>
+        <p className="text-body-sm text-fg-muted mt-4 max-w-[58ch]">{study.excerpt}</p>
+        <p className="text-label-sm text-accent mt-auto pt-8 font-mono tracking-[0.08em] uppercase">
+          Read case study{' '}
+          <span
+            aria-hidden="true"
+            className="inline-block transition-transform duration-200 ease-[var(--ease-out-soft)] group-hover:translate-x-1"
+          >
+            &rarr;
+          </span>
+        </p>
+      </Link>
+    </article>
   )
 }

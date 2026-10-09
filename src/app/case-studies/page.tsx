@@ -1,8 +1,12 @@
 import type { Metadata } from 'next'
-import { Container } from '@/components/Container'
-import { PageHeader } from '@/components/PageHeader'
 import { CaseStudyCard } from '@/components/CaseStudyCard'
-import { sortedCaseStudiesBefore, sortedCaseStudiesDb, type CaseStudy } from '@/content/case-studies'
+import { Container } from '@/components/Container'
+import { CtaBand } from '@/components/CtaBand'
+import { PageHero } from '@/components/PageHero'
+import { Reveal } from '@/components/ui/Reveal'
+import { sortedCaseStudiesBefore } from '@/content/case-studies'
+import { stagger } from '@/lib/motion'
+import { site } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Case studies',
@@ -11,37 +15,41 @@ export const metadata: Metadata = {
   alternates: { canonical: '/case-studies' },
 }
 
-function Grid({ studies }: { studies: CaseStudy[] }) {
-  return (
-    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {studies.map((study) => (
-        <CaseStudyCard key={study.slug} study={study} titleAs="h2" />
-      ))}
-    </div>
-  )
-}
-
 export default function CaseStudiesPage() {
   return (
     <>
-      <PageHeader
-        title="Case studies"
-        intro="A small selection of recent work. Some clients ask us not to name them. We honour that."
-      />
+      <PageHero>
+        <p className="text-label-sm sm:text-label text-fg-muted font-mono tracking-[0.08em] uppercase">
+          <span className="text-accent">Selected work</span>
+        </p>
+        <h1 className="text-h1-sm md:text-h1 mt-6 max-w-[16ch] font-bold tracking-[-0.03em] text-balance">
+          Case studies
+        </h1>
+        <p className="text-body-sm md:text-body text-fg-muted border-accent-deep mt-6 max-w-[62ch] border-l pl-5 md:pl-6">
+          A small selection of recent work. Some clients ask us not to name them. We honour that.
+        </p>
+      </PageHero>
 
-      <section className="pt-6 pb-20 sm:pb-24 lg:pb-28" aria-label="Case studies">
+      <section className="border-line border-b py-20 md:py-28" aria-label="Case studies">
         <Container>
-          <div data-v="before">
-            <Grid studies={sortedCaseStudiesBefore} />
-          </div>
-          <div data-v="db">
-            <Grid studies={sortedCaseStudiesDb} />
-          </div>
-          <p className="text-muted mt-10 max-w-2xl text-sm leading-relaxed">
+          <ul className="grid gap-6 md:grid-cols-2">
+            {sortedCaseStudiesBefore.map((study, i) => (
+              <Reveal as="li" key={study.slug} delay={stagger(i)}>
+                <CaseStudyCard study={study} as="h2" />
+              </Reveal>
+            ))}
+          </ul>
+          <p className="text-label text-fg-muted mt-10 max-w-[62ch]">
             <span aria-hidden="true">* </span>Client names changed where confidentiality applies.
           </p>
         </Container>
       </section>
+
+      <CtaBand
+        headline="Working on a programme where failure is not an option?"
+        text="Tell us what you’re trying to deliver. We’ll tell you honestly whether we can help."
+        email={site.email}
+      />
     </>
   )
 }

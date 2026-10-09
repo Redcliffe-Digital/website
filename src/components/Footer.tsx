@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import { Container } from './Container'
-import { Logo } from './Logo'
-import { Badges } from './Badges'
-import { services, site } from '@/lib/site'
+import { accreditations } from '@/content/accreditations'
+import { formattedAddress, services, site } from '@/lib/site'
 
 const company = [
   { label: 'About', href: '/about' },
@@ -20,7 +19,8 @@ const legal = [
 
 function FooterLink({ href, label }: { href: string; label: string }) {
   const external = href.startsWith('mailto:') || href.startsWith('http')
-  const className = 'text-sm text-white/70 transition-colors hover:text-white'
+  const className =
+    'text-body-sm text-fg-muted hover:text-fg inline-flex min-h-11 items-center transition-colors duration-200'
   return external ? (
     <a href={href} className={className}>
       {label}
@@ -35,10 +35,10 @@ function FooterLink({ href, label }: { href: string; label: string }) {
 function Column({ heading, links }: { heading: string; links: { label: string; href: string }[] }) {
   return (
     <div>
-      <h2 className="font-sans text-xs font-medium tracking-[0.12em] text-white/50 uppercase">
+      <h2 className="text-label-sm text-fg-muted font-mono tracking-[0.08em] uppercase">
         {heading}
       </h2>
-      <ul className="mt-4 space-y-2.5">
+      <ul className="mt-4 space-y-1">
         {links.map((link) => (
           <li key={link.href}>
             <FooterLink {...link} />
@@ -50,49 +50,95 @@ function Column({ heading, links }: { heading: string; links: { label: string; h
 }
 
 export function Footer() {
+  const year = new Date().getFullYear()
+
   return (
-    <footer data-site-footer className="bg-ink text-white/70">
-      <Container className="py-14">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          <div className="lg:pr-8">
-            <Logo variant="inverse" />
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
-              Senior engineers, architects and SREs applying trading-grade discipline to UK public
-              sector technology.
+    <footer data-site-footer className="border-line bg-surface mt-24 border-t md:mt-32">
+      <Container className="py-16 md:py-20">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-4">
+            <p className="text-h3-sm md:text-h3 font-bold tracking-[-0.03em]">
+              {site.name.split(' ')[0]}
+              <span className="text-label-sm text-fg-muted ml-2 font-mono font-medium tracking-[0.08em] uppercase">
+                Digital
+              </span>
             </p>
-            <Badges
-              variant="light"
-              size={32}
-              showLabels={false}
-              ids={[
-                'aws-developer-associate',
-                'azure-fundamentals',
-                'cyber-essentials',
-                'iso-27001',
-              ]}
-              className="mt-7"
-            />
+            <p className="text-body-sm text-fg-muted mt-3 max-w-[36ch]">{site.description}</p>
+            <ul className="text-label-sm mt-6 space-y-1 font-mono">
+              <li>
+                <a
+                  href={`mailto:${site.email}`}
+                  className="text-accent hover:text-fg inline-flex min-h-11 items-center transition-colors duration-200"
+                >
+                  {site.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${site.phoneHref}`}
+                  className="text-fg-muted hover:text-fg inline-flex min-h-11 items-center transition-colors duration-200"
+                >
+                  {site.phone}
+                </a>
+              </li>
+            </ul>
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {accreditations.slice(0, 4).map((item) => (
+                <li
+                  key={item.name}
+                  className="rounded-brand bg-fg flex h-10 w-10 items-center justify-center"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={item.badge} alt={item.name} width={28} height={28} loading="lazy" />
+                </li>
+              ))}
+            </ul>
           </div>
-          <Column heading="Services" links={services} />
-          <Column heading="Company" links={company} />
-          <Column heading="Legal" links={legal} />
+
+          <div className="lg:col-span-3">
+            <Column heading="Services" links={services} />
+          </div>
+          <div className="lg:col-span-2">
+            <Column heading="Company" links={company} />
+          </div>
+          <div className="lg:col-span-3">
+            <Column heading="Legal" links={legal} />
+          </div>
+        </div>
+
+        <div className="border-line mt-14 flex flex-col gap-6 border-t pt-8 lg:flex-row lg:items-end lg:justify-between">
+          <address className="text-label-sm text-fg-muted font-mono leading-relaxed not-italic">
+            {formattedAddress}
+          </address>
+          <div className="text-label-sm text-fg-muted font-mono lg:text-right">
+            <p>
+              &copy; {year} {site.legalName}. Registered in England and Wales, {site.companyNumber}.
+            </p>
+            <p className="mt-2">
+              <a
+                href="https://github.com/Redcliffe-Digital/website"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-fg underline underline-offset-4 transition-colors duration-200"
+              >
+                Built in the open · View source
+              </a>
+              <span aria-hidden="true" className="mx-2">
+                ·
+              </span>
+              Built by{' '}
+              <a
+                href="https://onovo.at"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-fg hover:text-accent underline underline-offset-4 transition-colors duration-200"
+              >
+                onovo.at
+              </a>
+            </p>
+          </div>
         </div>
       </Container>
-
-      <div className="border-t border-white/10">
-        <Container className="flex flex-col gap-3 py-6 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © 2026 {site.legalName}. Registered in England and Wales, {site.companyNumber}.
-          </p>
-          {/* TODO: add GitHub URL once the source repository is public. */}
-          <a
-            href="https://github.com/redcliffe-digital/website"
-            className="transition-colors hover:text-white"
-          >
-            Built in the open · View source
-          </a>
-        </Container>
-      </div>
     </footer>
   )
 }

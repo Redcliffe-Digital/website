@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { Container } from './Container'
+import { PageHero } from './PageHero'
 
 interface PageHeaderProps {
   eyebrow?: string
@@ -7,19 +7,31 @@ interface PageHeaderProps {
   intro?: ReactNode
 }
 
-/** Standard page-level header: H1 plus an optional intro line. */
+/**
+ * Standard page-level header: H1 plus an optional intro line, on the same
+ * waveform band as the rest of the site. Kept as a thin wrapper so the legal
+ * pages keep their existing call signature.
+ */
 export function PageHeader({ eyebrow, title, intro }: PageHeaderProps) {
   return (
-    <section className="pt-16 pb-6 sm:pt-20 lg:pt-24">
-      <Container>
-        <div className="fade-up max-w-3xl">
-          {eyebrow ? <p className="eyebrow mb-4">{eyebrow}</p> : null}
-          <h1 className="text-4xl leading-[1.1] sm:text-5xl lg:text-[3.5rem]">{title}</h1>
-          {intro ? (
-            <p className="text-muted mt-6 max-w-2xl text-lg leading-relaxed sm:text-xl">{intro}</p>
-          ) : null}
-        </div>
-      </Container>
-    </section>
+    <PageHero>
+      {eyebrow ? (
+        <p className="text-label-sm sm:text-label text-fg-muted font-mono tracking-[0.08em] uppercase">
+          <span className="text-accent">{eyebrow}</span>
+        </p>
+      ) : null}
+      <h1
+        className={`text-h1-sm md:text-h1 max-w-[20ch] font-bold tracking-[-0.03em] text-balance ${
+          eyebrow ? 'mt-6' : ''
+        }`}
+      >
+        {title}
+      </h1>
+      {intro ? (
+        <p className="text-body-sm md:text-body text-fg-muted border-accent-deep mt-6 max-w-[62ch] border-l pl-5 md:pl-6">
+          {intro}
+        </p>
+      ) : null}
+    </PageHero>
   )
 }
